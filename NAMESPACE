@@ -1,0 +1,20 @@
+import(methods)
+import(SparseM)
+import(randomForest)
+import(tree)
+import(nnet)
+import(tm)
+import(e1071)
+import(Rstem)
+import(ipred)
+import(maxent)
+import(RODBC)
+import(glmnet)
+
+exportClasses(
+              matrix_container,
+              analytics_container,
+              analytics_container_virgin
+              )
+
+exportPattern("^[^\\.]")
