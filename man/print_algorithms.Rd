@@ -5,7 +5,7 @@
 prints available algorithms for train_model() and train_models().
 }
 \description{
-An informative function that displays options for the "algorithms" parameter in \code{\link{train_model}} and \code{\link{train_models}}.
+An informative function that displays options for the \code{algorithms} parameter in \code{\link{train_model}} and \code{\link{train_models}}.
 }
 \usage{
 print_algorithms()

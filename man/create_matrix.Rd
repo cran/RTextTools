@@ -11,7 +11,7 @@ Creates an object of class \code{DocumentTermMatrix} from \pkg{tm} that can be u
 create_matrix(textColumns, language = "en", minDocFreq = 1, 
 minWordLength = 3, removeNumbers = FALSE, removePunctuation = TRUE, 
 removeSparseTerms = 0, removeStopwords = TRUE, selectFreqTerms = 0, 
-stemWords = TRUE, stripWhitespace = TRUE, toLower = TRUE, 
+stemWords = FALSE, stripWhitespace = TRUE, toLower = TRUE, 
 weighting = weightTf)
 }
 %- maybe also 'usage' for other objects documented here.
@@ -29,31 +29,31 @@ The minimum number of times a word should appear in a document for it to be incl
 The minimum number of letters a word should contain to be included in the matrix. See package \pkg{tm} for more details.
 }
   \item{removeNumbers}{
-A logical parameter to specify whether to remove numbers.
+A \code{logical} parameter to specify whether to remove numbers.
 }
   \item{removePunctuation}{
-A logical parameter to specify whether to remove punctuation.
+A \code{logical} parameter to specify whether to remove punctuation.
 }
   \item{removeSparseTerms}{
-See package tm for more details.
+See package \pkg{tm} for more details.
 }
   \item{removeStopwords}{
-A logical parameter to specify whether to remove stopwords using the language specified in language.
+A \code{logical} parameter to specify whether to remove stopwords using the language specified in language.
 }
   \item{selectFreqTerms}{
-Select the N most frequent terms in each document to use for training.
+Select the \code{N} most frequent terms in each document to use for training.
 }
   \item{stemWords}{
-A logical parameter to specify whether to stem words using the language specified in language.
+A \code{logical} parameter to specify whether to stem words using the language specified in language.
 }
   \item{stripWhitespace}{
-A logical parameter to specify whether to strip whitespace.
+A \code{logical} parameter to specify whether to strip whitespace.
 }
   \item{toLower}{
-A logical parameter to specify whether to make all text lowercase.
+A \code{logical} parameter to specify whether to make all text lowercase.
 }
   \item{weighting}{
-Either weightTf or weightTfIdf. See package \pkg{tm} for more details.
+Either \code{weightTf} or \code{weightTfIdf}. See package \pkg{tm} for more details.
 }
 }
 \author{

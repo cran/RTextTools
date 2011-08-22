@@ -26,7 +26,8 @@ The number of algorithms greater than or equal to this threshold that agree on t
 }
 }
 \value{
-Object of class \code{\link{analytics_container_virgin-class}} or \code{\link{analytics_container-class}} has either two or four slots respectively, depending on whether the \code{virgin} flag is set to \code{TRUE} or \code{FALSE} in \code{\link{create_corpus}}. They can be accessed using the @ operator (e.g. analytics@document_summary).
+Object of class \code{\link{analytics_container_virgin-class}} or \code{\link{analytics_container-class}} has either two or four slots respectively, depending on whether the \code{virgin} flag is set to \code{TRUE} or \code{FALSE} in \code{\link{create_corpus}}. They can be accessed using the \code{@} operator 
+for S4 classes (e.g. \code{analytics@document_summary}).
 }
 \author{
 Timothy P. Jurka <tpjurka@ucdavis.edu>, Loren Collingwood <lorenc2@uw.edu>

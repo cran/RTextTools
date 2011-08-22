@@ -1,4 +1,4 @@
 print_algorithms <- function() {
-	algorithms <- c("SVM","SLDA","BOOSTING","BAGGING","RF","GLMNET","TREE","NNET","MAXENT")
+	algorithms <- c("BAGGING", "BOOSTING", "GLMNET", "MAXENT", "NNET", "RF", "SLDA", "SVM", "TREE")
 	print(algorithms)
 }

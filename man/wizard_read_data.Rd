@@ -20,13 +20,13 @@ Character string of the name of the file, include path if the file is not locate
 Microsoft Access database only. The table name in the database.
 }
   \item{filetype}{
-Character vector specifying the file type. Options include "csv","tab","accdb","mdb" to denote .csv files, text files, or Access databases.
+Character vector specifying the file type. Options include \code{"csv"}, \code{"tab"}, \code{"accdb"}, \code{"mdb"} to denote .csv files, text files, or Access databases.
 }
   \item{virgin}{
 A logical (\code{TRUE} or \code{FALSE}) specifying whether to treat the classification data as virgin data or not. Defaults to \code{FALSE}, specifying that classification data is not virgin data.
 }
   \item{textColumns}{
-The a \code{cbind()} of column(s) to use for training the algorithms (e.g. cbind(data$Title)).
+The a \code{cbind()} of column(s) to use for training the algorithms (e.g. \code{cbind(data$Title)}).
 }
   \item{codeColumn}{
 A factor or vector of labels corresponding to each document in the matrix.

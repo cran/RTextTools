@@ -17,17 +17,17 @@ An S4 class containing all information necessary to train, classify, and generat
 \section{Slots}{
   \describe{
     \item{\code{training_matrix}}{Object of class \code{"matrix.csr"}:
-      stores the training set of the DocumentTermMatrix created by \code{\link{create_matrix}}}
+      stores the training set of the \code{DocumentTermMatrix} created by \code{\link{create_matrix}}}
     \item{\code{training_codes}}{Object of class \code{"factor"}:
-      stores the training labels for each document in training_matrix}
+      stores the training labels for each document in the \code{training_matrix} slot of \code{\link{matrix_container-class}}}
     \item{\code{classification_matrix}}{Object of class \code{"matrix.csr"}:
-      stores the classification set of the DocumentTermMatrix created by \code{\link{create_matrix}}}
+      stores the classification set of the \code{DocumentTermMatrix} created by \code{\link{create_matrix}}}
     \item{\code{testing_codes}}{Object of class \code{"factor"}:
-      if virgin=FALSE, stores the labels for each document in classification_matrix}
+      if \code{virgin=FALSE}, stores the labels for each document in classification_matrix}
     \item{\code{column_names}}{Object of class \code{"vector"}:
-      stores the column names of the DocumentTermMatrix created by \code{\link{create_matrix}}}
+      stores the column names of the \code{DocumentTermMatrix} created by \code{\link{create_matrix}}}
     \item{\code{virgin}}{Object of class \code{"logical"}:
-      boolean specifying whether the classification set is virgin data (TRUE) or not (FALSE).}
+      boolean specifying whether the classification set is virgin data (\code{TRUE}) or not (\code{FALSE}).}
   }
 }
 \author{

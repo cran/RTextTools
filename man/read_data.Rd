@@ -20,7 +20,7 @@ Character string of the name of the file, include path if the file is not locate
 Microsoft Access database only. The table name in the database.
 }
   \item{type}{
-Character vector specifying the file type. Options include "csv","tab","accdb","mdb" to denote .csv files, text files, or Access databases.
+Character vector specifying the file type. Options include \code{"csv"}, \code{"tab"}, \code{"accdb"}, \code{"mdb"} to denote .csv files, text files, or Access databases.
 }
   \item{\dots}{
 Other arguments passed to read_data.
