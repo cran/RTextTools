@@ -5,7 +5,7 @@
 	* Added create_scoreSummary() documentation
 	* Added Rstem as a CRAN package
 	* Removed score_classify()
-	* Removed references to Naive Bayes in the documentation.
+	* Removed references to Naive Bayes in the documentation
 	* Updated create_precisionRecallSummary.R with create_scoreSummary()
 	* Updated create_analytics.R with create_scoreSummary()
 	* Updated stemming function to fix poor stemming performance
@@ -13,13 +13,13 @@
 2011-08-16  Timothy P. Jurka  <tpjurka@ucdavis.edu>
 
 	* DESCRIPTION: Release 1.2
-	* Passes R CMD CHECK, meaning it can be submitted to CRAN (which I'll do as soon as I know it works for you).
-	* Added links to functions in documentation for easier navigation, expanded documentation to cover all functions and datasets.
-	* Added URL to DOCUMENTATION file, standardized description with what's on the website.
-	* Removed extraneous code (unused functions, commented code, etc.).
-	* Removed dtm_to_sparsem and use the as.compressed.matrix() function in maxent instead.
-	* Changed glmnet iteration parameter to 10^5.
-	* Changed classify_model() ... parameter to be passed into all predict() functions.
+	* Passes R CMD CHECK, meaning it can be submitted to CRAN
+	* Added links to functions in documentation for easier navigation, expanded documentation to cover all functions and datasets
+	* Added URL to DOCUMENTATION file, standardized description with what's on the website
+	* Removed extraneous code (unused functions, commented code, etc.)
+	* Removed dtm_to_sparsem and use the as.compressed.matrix() function in maxent instead
+	* Changed glmnet iteration parameter to 10^5
+	* Changed classify_model() ... parameter to be passed into all predict() functions
         
 2011-08-02  Timothy P. Jurka  <tpjurka@ucdavis.edu>
 

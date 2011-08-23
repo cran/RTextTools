@@ -52,7 +52,7 @@ cross_validate <- function(corpus,nfold,algorithm=c("SVM","SLDA","BOOSTING","BAG
 			alldata <- rbind(as.matrix(corpus@training_matrix),as.matrix(corpus@classification_matrix))
 			colnames(alldata) <- corpus@column_names
 			data_and_codes <- cbind(alldata,allcodes)
-            model <- LogitBoost(x=alldata[rand!=i,], y=allcodes[rand!=i],maxitboost)
+            model <- LogitBoost(xlearn=alldata[rand!=i,], ylearn=allcodes[rand!=i],maxitboost)
             pred <- predict(model,data.frame(alldata[rand==i,]))
         } else
 		if (algorithm=="BAGGING") {

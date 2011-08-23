@@ -1,6 +1,6 @@
-696437d6ad55b227653ca3d241cac578 *ChangeLog
-be0fddcc9dc350a61b08440b2942a956 *DESCRIPTION
-9592b335ccde1835282b731fca9ab812 *NAMESPACE
+45d1e144f830b9c0237cecc1781df916 *ChangeLog
+c5ca6b9ca596bf3f3a9426553b5af802 *DESCRIPTION
+36f1b71474f676f265d9506a3e047d52 *NAMESPACE
 3cd43a0a43c3b2bfa4a353146724f0c2 *R/classify_model.R
 84d7336bc6a8d866288d526a5cc17669 *R/classify_models.R
 e347d703dcd45ee398c797bc581349d6 *R/create_analytics.R
@@ -9,11 +9,11 @@ e347d703dcd45ee398c797bc581349d6 *R/create_analytics.R
 cf95aa25e81b3ed3504d22d0b4f2d9ef *R/create_matrix.R
 01205062b6f6c78ed1995933a0b25a9f *R/create_precisionRecallSummary.R
 6f286a02f218365eb3422b73486511e0 *R/create_scoreSummary.R
-b974e303b51e11ce95f200b70b79db12 *R/cross_validate.R
+9f6b38f29d69558001466773b77d42b3 *R/cross_validate.R
 20b8c8c6735ef589c873f3112748c684 *R/print_algorithms.R
 30c216943a7aae46fa0c5dad76c78be6 *R/read_data.R
 1ef9dc06d6bac896944ef0c5b9057459 *R/recall_accuracy.R
-560f6ed3327a3c7e2ffdc0e50da62379 *R/train_model.R
+71bbb8f510987b21a1e6ff4f14796485 *R/train_model.R
 1cd5ad901d90775613ccc96121e8dbad *R/train_models.R
 942b84479ba6c5ed3ddbe6313bfd6f6c *R/wizard_read_data.R
 520ec8c78d2026657d11285402b77ac3 *R/wizard_train_classify.R
@@ -27,7 +27,7 @@ b65d2c93e0ea86ad2f4b7168bf1c1b32 *inst/examples/conference_demo.R
 90e025248904b57b5fce0ed6c3d14896 *inst/examples/normal_demo.R
 1f49dc90fb2db56d6edce7dbd06821bb *inst/examples/simple_demo.R
 196d8d41427ad2a26b04b08963c04143 *man/NYTimes.Rd
-0d39293fa775aa23d486e2e247b982e7 *man/RTextTools-package.Rd
+4219f1b55ec0eb926ad63d128dc7acc2 *man/RTextTools-package.Rd
 9d4540420663ce569ac4929d3a171670 *man/USCongress.Rd
 bd67b7a512697151fcf54076e066e0ae *man/analytics_container-class.Rd
 c9b7d3f49cc7cc7301e5327835ab9a97 *man/analytics_container_virgin-class.Rd

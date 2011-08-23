@@ -16,7 +16,7 @@ train_model <- function(corpus,algorithm=c("SVM","SLDA","BOOSTING","BAGGING","RF
 		} else if (algorithm=="SLDA") {
            model <- slda(corpus.training_codes ~ ., data=data.frame(as.matrix(corpus@training_matrix),corpus@training_codes))
         } else if (algorithm=="BOOSTING") {
-            model <- LogitBoost(x=as.matrix(corpus@training_matrix), y=corpus@training_codes, nIter=maxitboost)
+            model <- LogitBoost(xlearn=as.matrix(corpus@training_matrix), ylearn=corpus@training_codes, nIter=maxitboost)
         } else if (algorithm=="BAGGING") {
             model <- bagging(corpus.training_codes ~ ., data=data.frame(as.matrix(corpus@training_matrix),corpus@training_codes))
         } else if (algorithm=="RF") {

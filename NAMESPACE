@@ -8,7 +8,6 @@ import(e1071)
 import(Rstem)
 import(ipred)
 import(maxent)
-import(RODBC)
 import(glmnet)
 
 exportClasses(

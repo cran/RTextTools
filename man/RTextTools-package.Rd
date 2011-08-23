@@ -9,8 +9,8 @@ RTextTools is a machine learning package for automatic text classification that 
 \tabular{ll}{
 Package: \tab RTextTools\cr
 Type: \tab Package\cr
-Version: \tab 1.3\cr
-Date: \tab 2011-08-22\cr
+Version: \tab 1.3.1\cr
+Date: \tab 2011-08-23\cr
 License: \tab GPL-3\cr
 LazyLoad: \tab yes\cr
 }
