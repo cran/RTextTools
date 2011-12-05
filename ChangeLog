@@ -1,3 +1,26 @@
+2011-10-01  Timothy P. Jurka  <tpjurka@ucdavis.edu>
+
+	* DESCRIPTION: Release 1.3.2
+	* Added CITATION
+	* Fixed bugs with maxent function in cross_validate()
+	* Fixed memory leak when dealing with factors instead of vectors
+	* Updated train_models() function to support new maxent implementation
+	* Updated DESCRIPTION file
+
+2011-08-23  Timothy P. Jurka  <tpjurka@ucdavis.edu>
+
+	* DESCRIPTION: Release 1.3.1
+	* Added ChangeLog
+	* Added inst/
+	* Added inst/examples
+	* Removed RTextTools-internal.R
+	* Removed accuracy.R
+	* Removed confusion_create.R
+	* Removed dtm_to_sparsem.R (see as.compressed.matrix in package maxent)
+	* Removed read_access.R
+	* Removed score_classify.R
+	* Updated LogitBoost train function to prevent certain bugs in Linux
+
 2011-08-22  Timothy P. Jurka  <tpjurka@ucdavis.edu>
 
 	* DESCRIPTION: Release 1.3
@@ -29,7 +52,7 @@
 	* User interface simplified, less parameters need to be passed in
 	* Bundled two sample datasets: NYTimes and USCongress
 	* Better analytics, with precision, recall, and F1 scores
-	* Simpler installation
+	* Simpler installation / Removed rJava
         
 2011-06-18  Timothy P. Jurka  <tpjurka@ucdavis.edu>
 

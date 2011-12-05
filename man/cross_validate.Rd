@@ -12,8 +12,8 @@ cross_validate(corpus, nfold, algorithm = c("SVM", "SLDA", "BOOSTING",
 "BAGGING", "RF", "GLMNET", "TREE", "NNET", "MAXENT"), seed = NA, 
 method = "C-classification", cross = 0, cost = 100, kernel = "radial", 
 maxitboost = 100, maxitglm = 500, size = 1, maxitnnet = 1000, MaxNWts = 10000, 
-rang = 0.1, decay = 5e-04, ntree = 200, feature_cutoff = 0, gaussian_prior = 0, 
-inequality_constraints = 0)
+rang = 0.1, decay = 5e-04, ntree = 200, l1_regularizer = 0, l2_regularizer = 0, 
+use_sgd = FALSE, set_heldout = 0, verbose = FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -65,14 +65,20 @@ Decay parameter for neural networks implentation. See \pkg{nnet} documentation f
   \item{ntree}{
 Number of trees parameter for RandomForests implentation. See \pkg{randomForest} documentation for more details.
 }
-  \item{feature_cutoff}{
-Feature cutoff parameter for maximum entropy implementation. See \pkg{maxent} documentation for more details.
+  \item{l1_regularizer}{
+An \code{numeric} turning on L1 regularization and setting the regularization parameter. A value of 0 will disable L1 regularization. See \pkg{maxent} documentation for more details.
 }
-  \item{gaussian_prior}{
-Guassian prior parameter for maximum entropy implementation. See \pkg{maxent} documentation for more details.
+  \item{l2_regularizer}{
+An \code{numeric} turning on L2 regularization and setting the regularization parameter. A value of 0 will disable L2 regularization. See \pkg{maxent} documentation for more details.
 }
-  \item{inequality_constraints}{
-Inequality constraints parameter for maximum entropy implementation. See \pkg{maxent} documentation for more details.
+  \item{use_sgd}{
+A \code{logical} indicating that SGD parameter estimation should be used. Defaults to \code{FALSE}. See \pkg{maxent} documentation for more details.
+}
+  \item{set_heldout}{
+An \code{integer} specifying the number of documents to hold out. Sets a held-out subset of your data to test against and prevent overfitting. See \pkg{maxent} documentation for more details.
+}
+  \item{verbose}{
+A \code{logical} specifying whether to provide descriptive output about the training process. Defaults to \code{FALSE}, or no output. See \pkg{maxent} documentation for more details.
 }
 }
 

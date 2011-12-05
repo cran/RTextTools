@@ -4,7 +4,7 @@ train_model <- function(corpus,algorithm=c("SVM","SLDA","BOOSTING","BAGGING","RF
 						maxitglm=10^5, # GLMNET PARAMETERS
 						size=1,maxitnnet=1000,MaxNWts=10000,rang=0.1,decay=5e-4,trace=FALSE, # NNET PARAMETERS
 						ntree=200, # RF PARAMETERS
-						feature_cutoff=0,gaussian_prior=0,inequality_constraints=0, # MAXENT PARAMETERS
+						l1_regularizer=0.0,l2_regularizer=0.0,use_sgd=FALSE,set_heldout=0,verbose=FALSE, # MAXENT PARAMETERS
 						...) {
         
         # CLEAN UP FROM PREVIOUS MODEL TRAINED
@@ -30,7 +30,7 @@ train_model <- function(corpus,algorithm=c("SVM","SLDA","BOOSTING","BAGGING","RF
         } else if (algorithm=="NNET") {
             model <- nnet(corpus.training_codes ~ ., data=data.frame(as.matrix(corpus@training_matrix),corpus@training_codes), size=size, maxit=maxitnnet, MaxNWts=MaxNWts, rang=rang, decay=decay, trace=trace)
         } else if (algorithm=="MAXENT") {
-			model <- maxent(corpus@training_matrix,as.vector(corpus@training_codes),feature_cutoff=feature_cutoff,gaussian_prior=gaussian_prior,inequality_constraints=inequality_constraints)
+			model <- maxent(corpus@training_matrix,as.vector(corpus@training_codes),l1_regularizer,l2_regularizer,use_sgd,set_heldout,verbose)
 		} else {
 			stop("ERROR: Invalid algorithm specified. Type print_algorithms() for a list of available algorithms.")
 		}

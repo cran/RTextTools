@@ -9,7 +9,7 @@ Creates an object of class \code{DocumentTermMatrix} from \pkg{tm} that can be u
 }
 \usage{
 create_matrix(textColumns, language = "en", minDocFreq = 1, 
-minWordLength = 3, removeNumbers = FALSE, removePunctuation = TRUE, 
+minWordLength = 3, ngramLength = 0, removeNumbers = FALSE, removePunctuation = TRUE, 
 removeSparseTerms = 0, removeStopwords = TRUE, selectFreqTerms = 0, 
 stemWords = FALSE, stripWhitespace = TRUE, toLower = TRUE, 
 weighting = weightTf)
@@ -27,6 +27,9 @@ The minimum number of times a word should appear in a document for it to be incl
 }
   \item{minWordLength}{
 The minimum number of letters a word should contain to be included in the matrix. See package \pkg{tm} for more details.
+}
+  \item{ngramLength}{
+The number of words to include per n-gram for the document-term matrix.
 }
   \item{removeNumbers}{
 A \code{logical} parameter to specify whether to remove numbers.

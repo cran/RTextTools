@@ -3,14 +3,14 @@
 \docType{package}
 \title{RTextTools Machine Learning}
 \description{
-RTextTools is a machine learning package for automatic text classification that makes it simple for novice users to get started with machine learning, while allowing experienced users to easily experiment with different settings and algorithm combinations. The package includes nine algorithms for ensemble classification (SVM, SLDA, BOOSTING, BAGGING, RF, GLMNET, TREE, NNET, MAXENT), comprehensive analytics, and thorough documentation.
+RTextTools is a machine learning package for automatic text classification that makes it simple for novice users to get started with machine learning, while allowing experienced users to easily experiment with different settings and algorithm combinations. The package includes nine algorithms for ensemble classification (svm, slda, boosting, bagging, random forests, glmnet, decision trees, neural networks, maximum entropy), comprehensive analytics, and thorough documentation.
 }
 \details{
 \tabular{ll}{
 Package: \tab RTextTools\cr
 Type: \tab Package\cr
-Version: \tab 1.3.1\cr
-Date: \tab 2011-08-23\cr
+Version: \tab 1.3.2\cr
+Date: \tab 2011-12-05\cr
 License: \tab GPL-3\cr
 LazyLoad: \tab yes\cr
 }
