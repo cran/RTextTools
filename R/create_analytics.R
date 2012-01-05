@@ -1,4 +1,4 @@
-create_analytics <- function(corpus,classification_results,b=1,threshold=NULL) {	
+create_analytics <- function(corpus,classification_results,b=1) {	
 	create_documentSummary <- function(container, scores) {
 		return(cbind(MANUAL_CODE=as.numeric(as.vector(container@testing_codes)),CONSENSUS_CODE=scores$BEST_LABEL,CONSENSUS_AGREE=scores$NUM_AGREE,CONSENSUS_INCORRECT=container@testing_codes!=scores$BEST_LABEL,PROBABILITY_CODE=scores$BEST_PROB,PROBABILITY_INCORRECT=container@testing_codes!=scores$BEST_PROB))
 	}
@@ -40,100 +40,41 @@ create_analytics <- function(corpus,classification_results,b=1,threshold=NULL) {
 	create_algorithmSummary <- function(container, scores) {
 		topic_codes <- unique(container@testing_codes)
 		
-		bagging_accuracy <- c()
-		slda_accuracy <- c()
-		logitboost_accuracy <- c()
-		svm_accuracy <- c()
-		forests_accuracy <- c()
-		glmnet_accuracy <- c()
-		tree_accuracy <- c()
-		nnetwork_accuracy <- c()
-		maxentropy_accuracy <- c()
+        accuracies <- list()
 		
 		algorithm_summary <- cbind(TOPIC_CODE=as.numeric(as.vector(topic_codes)))
 		columns <- colnames(scores)
+        labels <- c()
 		
 		for (code in topic_codes) {
-			if (pmatch("SVM_LABEL",columns,nomatch=0) > 0) {
-				num_manual <- length(container@testing_codes[container@testing_codes==code])
-				pct_analysis <- container@testing_codes[container@testing_codes==scores$SVM_LABEL]==code
-				pct_correct <- length(pct_analysis[pct_analysis == TRUE])/num_manual
-				svm_accuracy <- append(svm_accuracy,pct_correct)
+            for (i in seq(1,length(columns)-3)) {
+                num_manual <- length(container@testing_codes[container@testing_codes==code])
+                pct_analysis <- container@testing_codes[container@testing_codes==scores[,i]]==code
+                pct_correct <- length(pct_analysis[pct_analysis == TRUE])/num_manual
+                
+                accuracies[[columns[i]]] <- append(accuracies[[columns[i]]],pct_correct)
 			}
-			
-			if (pmatch("SLDA_LABEL",columns,nomatch=0) > 0) {
-				num_manual <- length(container@testing_codes[container@testing_codes==code])
-				pct_analysis <- container@testing_codes[container@testing_codes==scores$SLDA_LABEL]==code
-				pct_correct <- length(pct_analysis[pct_analysis == TRUE])/num_manual
-				slda_accuracy <- append(slda_accuracy,pct_correct)
-			}
-			
-			if (pmatch("LOGITBOOST_LABEL",columns,nomatch=0) > 0) {
-				num_manual <- length(container@testing_codes[container@testing_codes==code])
-				pct_analysis <- container@testing_codes[container@testing_codes==scores$LOGITBOOST_LABEL]==code
-				pct_correct <- length(pct_analysis[pct_analysis == TRUE])/num_manual
-				logitboost_accuracy <- append(logitboost_accuracy,pct_correct)
-			}
-			
-			if (pmatch("BAGGING_LABEL",columns,nomatch=0) > 0) {
-				num_manual <- length(container@testing_codes[container@testing_codes==code])
-				pct_analysis <- container@testing_codes[container@testing_codes==scores$BAGGING_LABEL]==code
-				pct_correct <- length(pct_analysis[pct_analysis == TRUE])/num_manual
-				bagging_accuracy <- append(bagging_accuracy,pct_correct)
-			}
-			
-			if (pmatch("FORESTS_LABEL",columns,nomatch=0) > 0) {
-				num_manual <- length(container@testing_codes[container@testing_codes==code])
-				pct_analysis <- container@testing_codes[container@testing_codes==scores$FORESTS_LABEL]==code
-				pct_correct <- length(pct_analysis[pct_analysis == TRUE])/num_manual
-				forests_accuracy <- append(forests_accuracy,pct_correct)
-			}
-			
-			if (pmatch("GLMNET_LABEL",columns,nomatch=0) > 0) {
-				num_manual <- length(container@testing_codes[container@testing_codes==code])
-				pct_analysis <- container@testing_codes[container@testing_codes==scores$GLMNET_LABEL]==code
-				pct_correct <- length(pct_analysis[pct_analysis == TRUE])/num_manual
-				glmnet_accuracy <- append(glmnet_accuracy,pct_correct)
-			}
-			
-			if (pmatch("TREE_LABEL",columns,nomatch=0) > 0) {
-				num_manual <- length(container@testing_codes[container@testing_codes==code])
-				pct_analysis <- container@testing_codes[container@testing_codes==scores$TREE_LABEL]==code
-				pct_correct <- length(pct_analysis[pct_analysis == TRUE])/num_manual
-				tre_accuracy <- append(tree_accuracy,pct_correct)
-			}
-			
-			if (pmatch("NNETWORK_LABEL",columns,nomatch=0) > 0) {
-				num_manual <- length(container@testing_codes[container@testing_codes==code])
-				pct_analysis <- container@testing_codes[container@testing_codes==scores$NNETWORK_LABEL]==code
-				pct_correct <- length(pct_analysis[pct_analysis == TRUE])/num_manual
-				nnetwork_accuracy <- append(nnetwork_accuracy,pct_correct)
-			}
-			
-			if (pmatch("MAXENTROPY_LABEL",columns,nomatch=0) > 0) {
-				num_manual <- length(container@testing_codes[container@testing_codes==code])
-				pct_analysis <- container@testing_codes[container@testing_codes==scores$MAXENTROPY_LABEL]==code
-				pct_correct <- length(pct_analysis[pct_analysis == TRUE])/num_manual
-				maxentropy_accuracy <- append(maxentropy_accuracy,pct_correct)
-			}
-			
 		}
 		
-		if (length(bagging_accuracy) > 0) algorithm_summary <- cbind(algorithm_summary,BAGGING_ACCURACY=bagging_accuracy*100)
-		if (length(slda_accuracy) > 0) algorithm_summary <- cbind(algorithm_summary,SLDA_ACCURACY=slda_accuracy*100)
-		if (length(logitboost_accuracy) > 0) algorithm_summary <- cbind(algorithm_summary,LOGITBOOST_ACCURACY=logitboost_accuracy*100)
-		if (length(svm_accuracy) > 0) algorithm_summary <- cbind(algorithm_summary,SVM_ACCURACY=svm_accuracy*100)
-		if (length(forests_accuracy) > 0) algorithm_summary <- cbind(algorithm_summary,FORESTS_ACCURACY=forests_accuracy*100)
-		if (length(glmnet_accuracy) > 0) algorithm_summary <- cbind(algorithm_summary,GLMNET_ACCURACY=glmnet_accuracy*100)
-		if (length(tree_accuracy) > 0) algorithm_summary <- cbind(algorithm_summary,TREE_ACCURACY=tree_accuracy*100)
-		if (length(nnetwork_accuracy) > 0) algorithm_summary <- cbind(algorithm_summary,NNETWORK_ACCURACY=nnetwork_accuracy*100)
-		if (length(maxentropy_accuracy) > 0) algorithm_summary <- cbind(algorithm_summary,MAXENTROPY_ACCURACY=maxentropy_accuracy*100)
+        for (i in seq(1,length(columns)-3)) {
+            algorithm_summary <- cbind(algorithm_summary,accuracies[[i]]*100)
+            
+            label <- paste(strsplit(columns[i],"_")[[1]][1],"_ACCURACY",sep="")
+            labels <- append(labels,label)
+        }
+
+        colnames(algorithm_summary) <- c("TOPIC_CODE", labels)
 		
 		return(algorithm_summary)
 	}
 	
-	if (is.null(threshold)) threshold <- (ncol(classification_results)/2)
 	if (corpus@virgin == FALSE) {
+		#print(system.time(score_summary <- create_scoreSummary(corpus, classification_results)))
+		#print(system.time(document_summary <- create_documentSummary(corpus, score_summary)))
+		#print(system.time(topic_summary <- as.data.frame(create_topicSummary(corpus, score_summary))))
+		#print(system.time(algorithm_summary <- as.data.frame(create_algorithmSummary(corpus, score_summary))))
+		#print(system.time(statistics_summary <- as.data.frame(create_precisionRecallSummary(corpus, classification_results, b))))
+		
 		score_summary <- create_scoreSummary(corpus, classification_results)
 		document_summary <- create_documentSummary(corpus, score_summary)
 		topic_summary <- as.data.frame(create_topicSummary(corpus, score_summary))
@@ -148,7 +89,7 @@ create_analytics <- function(corpus,classification_results,b=1,threshold=NULL) {
 		algorithm_summary <- cbind(statistics_summary, algorithm_summary)
 		algorithm_summary <- algorithm_summary[,(-ncol(statistics_summary)-1)]
 		
-		ensemble_summary <- create_ensembleSummary(as.data.frame(raw_summary),threshold=threshold)
+		ensemble_summary <- create_ensembleSummary(as.data.frame(raw_summary))
 		
 		container <- new("analytics_container", label_summary=as.data.frame(topic_summary)[,-1], document_summary=as.data.frame(raw_summary), algorithm_summary=as.data.frame(algorithm_summary), ensemble_summary=ensemble_summary)
     } else {

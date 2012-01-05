@@ -8,9 +8,9 @@ creates a document-term matrix to be passed into create_corpus().
 Creates an object of class \code{DocumentTermMatrix} from \pkg{tm} that can be used in the \code{\link{create_corpus}} function.
 }
 \usage{
-create_matrix(textColumns, language = "en", minDocFreq = 1, 
+create_matrix(textColumns, language = "english", minDocFreq = 1, 
 minWordLength = 3, ngramLength = 0, removeNumbers = FALSE, removePunctuation = TRUE, 
-removeSparseTerms = 0, removeStopwords = TRUE, selectFreqTerms = 0, 
+removeSparseTerms = 0, removeStopwords = TRUE, 
 stemWords = FALSE, stripWhitespace = TRUE, toLower = TRUE, 
 weighting = weightTf)
 }
@@ -42,9 +42,6 @@ See package \pkg{tm} for more details.
 }
   \item{removeStopwords}{
 A \code{logical} parameter to specify whether to remove stopwords using the language specified in language.
-}
-  \item{selectFreqTerms}{
-Select the \code{N} most frequent terms in each document to use for training.
 }
   \item{stemWords}{
 A \code{logical} parameter to specify whether to stem words using the language specified in language.

@@ -8,7 +8,7 @@ creates an object of class analytics given classification results.
 Takes the results from functions \code{\link{classify_model}} or \code{\link{classify_models}} and computes various statistics to help interpret the data.
 }
 \usage{
-create_analytics(corpus, classification_results, b=1, threshold=NULL)
+create_analytics(corpus, classification_results, b=1)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -20,9 +20,6 @@ A \code{cbind()} of result objects returned by \code{\link{classify_model}}, or 
 }
   \item{b}{
 b-value for generating precision, recall, and F-scores statistics.
-}
-  \item{threshold}{
-The number of algorithms greater than or equal to this threshold that agree on the same topic. For example, a threshold value of 3 will search for those documents where 3 or more algorithms agreed.
 }
 }
 \value{

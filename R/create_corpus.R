@@ -1,5 +1,5 @@
 create_corpus <- function(matrix,labels,trainSize,testSize,virgin) {
-	totalSize <- sort(append(trainSize,testSize))
+	totalSize <- sort(unique(append(trainSize,testSize)))
 	column_names <- colnames(matrix)
 	data_matrix <- as.compressed.matrix(matrix[totalSize])
 	

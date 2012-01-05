@@ -1,4 +1,13 @@
-2011-10-01  Timothy P. Jurka  <tpjurka@ucdavis.edu>
+2012-01-05  Timothy P. Jurka  <tpjurka@ucdavis.edu>
+
+	* DESCRIPTION: Release 1.3.3
+	* Optimized create_analytics() function
+	* Optimized create_matrix() function
+	* Optimized create_ensembleSummary() function
+	* Fixed bugs related to overlapping corpus indices
+	* Updated DESCRIPTION file
+
+2011-12-05  Timothy P. Jurka  <tpjurka@ucdavis.edu>
 
 	* DESCRIPTION: Release 1.3.2
 	* Added CITATION
