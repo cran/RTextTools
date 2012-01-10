@@ -1,4 +1,4 @@
-create_matrix <- function(textColumns, language="english", minDocFreq=1, minWordLength=3, ngramLength=0, removeNumbers=FALSE, removePunctuation=TRUE, removeSparseTerms=0, removeStopwords=TRUE,  stemWords=FALSE, stripWhitespace=TRUE, toLower=TRUE, weighting=weightTf) {
+create_matrix <- function(textColumns, language="english", minDocFreq=1, minWordLength=3, ngramLength=0, originalMatrix=NULL, removeNumbers=FALSE, removePunctuation=TRUE, removeSparseTerms=0, removeStopwords=TRUE,  stemWords=FALSE, stripWhitespace=TRUE, toLower=TRUE, weighting=weightTf) {
 	
     stem_words <- function(x) {
         split <- strsplit(x," ")
@@ -19,6 +19,26 @@ create_matrix <- function(textColumns, language="english", minDocFreq=1, minWord
 	matrix <- DocumentTermMatrix(corpus,control=control);
     if (removeSparseTerms > 0) matrix <- removeSparseTerms(matrix,removeSparseTerms)
 	
+    if (!is.null(originalMatrix)) {
+        diff_new <- pmatch(colnames(originalMatrix),colnames(matrix),nomatch=0)
+        terms_new <- colnames(matrix)[diff_new]
+
+        diff_old <- which(colnames(originalMatrix)!=colnames(matrix))
+        terms_old <- colnames(originalMatrix)[diff_old]
+
+        diff <- pmatch(terms_new,terms_old,nomatch=0)
+        terms <- terms_old[-diff]
+
+        weight <- 0
+        if (attr(weighting,"Acronym")=="tf-idf") weight <- 0.000000001
+        amat <- matrix(weight,nrow=nrow(matrix),ncol=length(terms))
+        colnames(amat) <- terms
+        rownames(amat) <- rownames(matrix)
+
+        fixed <- as.DocumentTermMatrix(cbind(matrix[,diff_new],amat),weighting=weighting)
+        matrix <- fixed
+    }
+
 	gc()
 	return(matrix)
 }

@@ -9,6 +9,7 @@ import(Rstem)
 import(ipred)
 import(maxent)
 import(glmnet)
+import(tau)
 
 exportClasses(
               matrix_container,

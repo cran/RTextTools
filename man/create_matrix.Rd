@@ -9,10 +9,9 @@ Creates an object of class \code{DocumentTermMatrix} from \pkg{tm} that can be u
 }
 \usage{
 create_matrix(textColumns, language = "english", minDocFreq = 1, 
-minWordLength = 3, ngramLength = 0, removeNumbers = FALSE, removePunctuation = TRUE, 
-removeSparseTerms = 0, removeStopwords = TRUE, 
-stemWords = FALSE, stripWhitespace = TRUE, toLower = TRUE, 
-weighting = weightTf)
+minWordLength = 3, ngramLength = 0, originalMatrix=NULL, removeNumbers = FALSE, 
+removePunctuation = TRUE, removeSparseTerms = 0, removeStopwords = TRUE, 
+stemWords = FALSE, stripWhitespace = TRUE, toLower = TRUE, weighting = weightTf)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -30,6 +29,9 @@ The minimum number of letters a word should contain to be included in the matrix
 }
   \item{ngramLength}{
 The number of words to include per n-gram for the document-term matrix.
+}
+  \item{originalMatrix}{
+The original \code{DocumentTermMatrix} used to train the models. If supplied, will adjust the new matrix to work with saved models.
 }
   \item{removeNumbers}{
 A \code{logical} parameter to specify whether to remove numbers.

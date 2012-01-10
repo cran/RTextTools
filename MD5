@@ -1,12 +1,12 @@
-932524dcfd0b46968d41540c57b36dd1 *ChangeLog
-5491a2bd2661ac525f6de1a0101c297a *DESCRIPTION
-36f1b71474f676f265d9506a3e047d52 *NAMESPACE
+9807093e54f9d5de525618a4672f9561 *ChangeLog
+1984bb9b9faaa9ce7059855f4ce8422c *DESCRIPTION
+29e2e3a360bfabed5c9a84fc6cbfc8da *NAMESPACE
 3cd43a0a43c3b2bfa4a353146724f0c2 *R/classify_model.R
 84d7336bc6a8d866288d526a5cc17669 *R/classify_models.R
 e76c3325472713564a322f55ee471cd7 *R/create_analytics.R
 dc78aa0bb79dc2abfbf7cd6c0e4ad331 *R/create_corpus.R
 856e5c7c49b9a2ad0a7db41bb0cb3313 *R/create_ensembleSummary.R
-261d5d4be20b15118957af6594223518 *R/create_matrix.R
+01ee0c92f591e45fb03771c917ef9a84 *R/create_matrix.R
 01205062b6f6c78ed1995933a0b25a9f *R/create_precisionRecallSummary.R
 6f286a02f218365eb3422b73486511e0 *R/create_scoreSummary.R
 9ac6d88431a51ddabba87a237914a9f1 *R/cross_validate.R
@@ -21,7 +21,7 @@ b08eb2db8d5627a5277cd9385c4feaeb *R/zzz.R
 d106916fbf06a414d5522ba01d746a87 *data/NYTimes.csv.gz
 acf8a2d65ce4f622d6c622e1db61880f *data/USCongress.csv.gz
 0f4b93b422a4e537fbd083ad69279073 *data/datalist
-5763dcb45de0c0666253a5ee2ee82154 *inst/THANKS
+0724463ff386bc71502974f5f991d352 *inst/THANKS
 b65d2c93e0ea86ad2f4b7168bf1c1b32 *inst/examples/conference_demo.R
 8db2cea93b685f3227fa2e1957d5f8fd *inst/examples/installation_demo.R
 90e025248904b57b5fce0ed6c3d14896 *inst/examples/normal_demo.R
@@ -35,7 +35,7 @@ c9b7d3f49cc7cc7301e5327835ab9a97 *man/analytics_container_virgin-class.Rd
 b2c696dc556bdab67ebf218488058103 *man/create_analytics.Rd
 8a0a88d768577ff9902b9d9f1666d0f8 *man/create_corpus.Rd
 c000e977a000a00f1294c3b25ed6a22e *man/create_ensembleSummary.Rd
-4067b5b19f5291229e11f3c038c8d46b *man/create_matrix.Rd
+96614a7eebce97a8ad54ea4863ced344 *man/create_matrix.Rd
 5e7e3946d5a3dee69e5b94ad4bbb9e45 *man/create_precisionRecallSummary.Rd
 09ec4756277affce1272d9075504b81f *man/create_scoreSummary.Rd
 de703794691e874765fb51109f613fe9 *man/cross_validate.Rd
