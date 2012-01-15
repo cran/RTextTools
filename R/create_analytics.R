@@ -4,7 +4,15 @@ create_analytics <- function(corpus,classification_results,b=1) {
 	}
 	
 	create_topicSummary <- function(container, scores) {
-		topic_codes <- unique(container@training_codes)
+		topic_codes1 <- unique(container@training_codes)
+        topic_codes2 <- unique(container@testing_codes)        
+
+        if (length(topic_codes1) > length(topic_codes2)) { 
+            topic_codes <- topic_codes1
+        } else {
+            topic_codes <- topic_codes2
+        }
+
 		manually_coded <- c()
 		automatically_coded_label <- c()
 		automatically_coded_prob <- c()

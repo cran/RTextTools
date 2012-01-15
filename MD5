@@ -1,12 +1,12 @@
-9807093e54f9d5de525618a4672f9561 *ChangeLog
-1984bb9b9faaa9ce7059855f4ce8422c *DESCRIPTION
+4cfcc82b32e1403d6f382b963f9600a9 *ChangeLog
+54f1d8bed0edc799a4c084aab7526b5d *DESCRIPTION
 29e2e3a360bfabed5c9a84fc6cbfc8da *NAMESPACE
-3cd43a0a43c3b2bfa4a353146724f0c2 *R/classify_model.R
+a49dc723b11b7404042fe813bfcab414 *R/classify_model.R
 84d7336bc6a8d866288d526a5cc17669 *R/classify_models.R
-e76c3325472713564a322f55ee471cd7 *R/create_analytics.R
-dc78aa0bb79dc2abfbf7cd6c0e4ad331 *R/create_corpus.R
+91a927a7c8e93cd755d30a6656537e94 *R/create_analytics.R
+4ca843c6c36cc85e5065f696cc99f671 *R/create_corpus.R
 856e5c7c49b9a2ad0a7db41bb0cb3313 *R/create_ensembleSummary.R
-01ee0c92f591e45fb03771c917ef9a84 *R/create_matrix.R
+6c86fffc720497ac82ef2c09f9ed8fcd *R/create_matrix.R
 01205062b6f6c78ed1995933a0b25a9f *R/create_precisionRecallSummary.R
 6f286a02f218365eb3422b73486511e0 *R/create_scoreSummary.R
 9ac6d88431a51ddabba87a237914a9f1 *R/cross_validate.R
@@ -25,6 +25,7 @@ acf8a2d65ce4f622d6c622e1db61880f *data/USCongress.csv.gz
 b65d2c93e0ea86ad2f4b7168bf1c1b32 *inst/examples/conference_demo.R
 8db2cea93b685f3227fa2e1957d5f8fd *inst/examples/installation_demo.R
 90e025248904b57b5fce0ed6c3d14896 *inst/examples/normal_demo.R
+fa24bd02d2c62bd8be7efb2971f9123e *inst/examples/saved_model_demo.R
 1f49dc90fb2db56d6edce7dbd06821bb *inst/examples/simple_demo.R
 196d8d41427ad2a26b04b08963c04143 *man/NYTimes.Rd
 9d4540420663ce569ac4929d3a171670 *man/USCongress.Rd
@@ -33,7 +34,7 @@ c9b7d3f49cc7cc7301e5327835ab9a97 *man/analytics_container_virgin-class.Rd
 4573775596ab40e89d3bb06ef0e3b3cf *man/classify_model.Rd
 6b7a1827febffe47081c3792ed379d71 *man/classify_models.Rd
 b2c696dc556bdab67ebf218488058103 *man/create_analytics.Rd
-8a0a88d768577ff9902b9d9f1666d0f8 *man/create_corpus.Rd
+29c7e24bf0f05b38d5ebdc862534a685 *man/create_corpus.Rd
 c000e977a000a00f1294c3b25ed6a22e *man/create_ensembleSummary.Rd
 96614a7eebce97a8ad54ea4863ced344 *man/create_matrix.Rd
 5e7e3946d5a3dee69e5b94ad4bbb9e45 *man/create_precisionRecallSummary.Rd

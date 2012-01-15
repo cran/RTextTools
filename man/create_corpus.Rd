@@ -8,7 +8,7 @@ creates a corpus for training, classifying, and analyzing documents.
 Given a \code{DocumentTermMatrix} from the \pkg{tm} package and corresponding document labels, creates a corpus of class \code{\link{matrix_container-class}} that can be used for training and classification (i.e. \code{\link{train_model}}, \code{\link{train_models}}, \code{\link{classify_model}}, \code{\link{classify_models}})
 }
 \usage{
-create_corpus(matrix, labels, trainSize, testSize, virgin)
+create_corpus(matrix, labels, trainSize=NULL, testSize=NULL, virgin)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -19,10 +19,10 @@ A document-term matrix of class \code{DocumentTermMatrix} or \code{TermDocumentM
 A \code{factor} or \code{vector} of labels corresponding to each document in the matrix.
 }
   \item{trainSize}{
-A range (e.g. \code{1:1000}) specifying the number of documents to use for training the models.
+A range (e.g. \code{1:1000}) specifying the number of documents to use for training the models. Can be left blank for classifying corpora using saved models that don't need to be trained.
 }
   \item{testSize}{
-A range (e.g. \code{1:1000}) specifying the number of documents to use for classification.
+A range (e.g. \code{1:1000}) specifying the number of documents to use for classification. Can be left blank for training on all data in the matrix.
 }
   \item{virgin}{
 A logical (\code{TRUE} or \code{FALSE}) specifying whether to treat the classification data as virgin data or not.

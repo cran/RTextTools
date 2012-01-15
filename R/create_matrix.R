@@ -20,14 +20,7 @@ create_matrix <- function(textColumns, language="english", minDocFreq=1, minWord
     if (removeSparseTerms > 0) matrix <- removeSparseTerms(matrix,removeSparseTerms)
 	
     if (!is.null(originalMatrix)) {
-        diff_new <- pmatch(colnames(originalMatrix),colnames(matrix),nomatch=0)
-        terms_new <- colnames(matrix)[diff_new]
-
-        diff_old <- which(colnames(originalMatrix)!=colnames(matrix))
-        terms_old <- colnames(originalMatrix)[diff_old]
-
-        diff <- pmatch(terms_new,terms_old,nomatch=0)
-        terms <- terms_old[-diff]
+        terms <- colnames(originalMatrix[,which(!colnames(originalMatrix) %in% colnames(matrix))])
 
         weight <- 0
         if (attr(weighting,"Acronym")=="tf-idf") weight <- 0.000000001
@@ -35,9 +28,11 @@ create_matrix <- function(textColumns, language="english", minDocFreq=1, minWord
         colnames(amat) <- terms
         rownames(amat) <- rownames(matrix)
 
-        fixed <- as.DocumentTermMatrix(cbind(matrix[,diff_new],amat),weighting=weighting)
+        fixed <- as.DocumentTermMatrix(cbind(matrix[,which(colnames(matrix) %in% colnames(originalMatrix))],amat),weighting=weighting)
         matrix <- fixed
     }
+
+	matrix <- matrix[,sort(colnames(matrix))]
 
 	gc()
 	return(matrix)
