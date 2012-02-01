@@ -8,10 +8,11 @@ creates a document-term matrix to be passed into create_corpus().
 Creates an object of class \code{DocumentTermMatrix} from \pkg{tm} that can be used in the \code{\link{create_corpus}} function.
 }
 \usage{
-create_matrix(textColumns, language = "english", minDocFreq = 1, 
-minWordLength = 3, ngramLength = 0, originalMatrix=NULL, removeNumbers = FALSE, 
-removePunctuation = TRUE, removeSparseTerms = 0, removeStopwords = TRUE, 
-stemWords = FALSE, stripWhitespace = TRUE, toLower = TRUE, weighting = weightTf)
+create_matrix(textColumns, language="english", minDocFreq=1, maxDocFreq=Inf, 
+minWordLength=3, maxWordLength=Inf, ngramLength=1, originalMatrix=NULL, 
+removeNumbers=FALSE, removePunctuation=TRUE, removeSparseTerms=0, 
+removeStopwords=TRUE,  stemWords=FALSE, stripWhitespace=TRUE, toLower=TRUE, 
+weighting=weightTf)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -24,8 +25,14 @@ The language to be used for stemming the text data.
   \item{minDocFreq}{
 The minimum number of times a word should appear in a document for it to be included in the matrix. See package \pkg{tm} for more details.
 }
+  \item{maxDocFreq}{
+The maximum number of times a word should appear in a document for it to be included in the matrix. See package \pkg{tm} for more details.
+}
   \item{minWordLength}{
-The minimum number of letters a word should contain to be included in the matrix. See package \pkg{tm} for more details.
+The minimum number of letters a word or n-gram should contain to be included in the matrix. See package \pkg{tm} for more details.
+}
+  \item{maxWordLength}{
+The maximum number of letters a word or n-gram should contain to be included in the matrix. See package \pkg{tm} for more details.
 }
   \item{ngramLength}{
 The number of words to include per n-gram for the document-term matrix.

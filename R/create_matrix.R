@@ -1,4 +1,4 @@
-create_matrix <- function(textColumns, language="english", minDocFreq=1, minWordLength=3, ngramLength=0, originalMatrix=NULL, removeNumbers=FALSE, removePunctuation=TRUE, removeSparseTerms=0, removeStopwords=TRUE,  stemWords=FALSE, stripWhitespace=TRUE, toLower=TRUE, weighting=weightTf) {
+create_matrix <- function(textColumns, language="english", minDocFreq=1, maxDocFreq=Inf, minWordLength=3, maxWordLength=Inf, ngramLength=1, originalMatrix=NULL, removeNumbers=FALSE, removePunctuation=TRUE, removeSparseTerms=0, removeStopwords=TRUE,  stemWords=FALSE, stripWhitespace=TRUE, toLower=TRUE, weighting=weightTf) {
 	
     stem_words <- function(x) {
         split <- strsplit(x," ")
@@ -7,10 +7,15 @@ create_matrix <- function(textColumns, language="english", minDocFreq=1, minWord
     
     tokenize_ngrams <- function(x, n=ngramLength) return(rownames(as.data.frame(unclass(textcnt(x,method="string",n=n)))))
 	
-	control <- list(language=language,tolower=toLower,removeNumbers=removeNumbers,removePunctuation=removePunctuation,stripWhitespace=stripWhitespace,minWordLength=minWordLength,stopwords=removeStopwords,minDocFreq=minDocFreq,weighting=weighting)
+	control <- list(bounds=list(local=c(minDocFreq,maxDocFreq)),language=language,tolower=toLower,removeNumbers=removeNumbers,removePunctuation=removePunctuation,stopwords=removeStopwords,stripWhitespace=stripWhitespace,wordLengths=c(minWordLength,maxWordLength),weighting=weighting)
+        
+    if (ngramLength > 1) { 
+    	control <- append(control,list(tokenize=tokenize_ngrams),after=7)
+    } else {
+    	control <- append(control,list(tokenize=scan_tokenizer),after=4)
+    }
     
-    if (ngramLength > 0) control <- append(control,list(tokenize=tokenize_ngrams),after=6)
-    if (stemWords == TRUE) control <- append(control,list(stemming=stem_words),after=6)
+    if (stemWords == TRUE) control <- append(control,list(stemming=stem_words),after=7)
     
     trainingColumn <- apply(as.matrix(textColumns),1,paste,collapse=" ")
     trainingColumn <- sapply(as.vector(trainingColumn,mode="character"),iconv,to="UTF8",sub="byte")

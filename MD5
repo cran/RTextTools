@@ -1,12 +1,12 @@
-4cfcc82b32e1403d6f382b963f9600a9 *ChangeLog
-54f1d8bed0edc799a4c084aab7526b5d *DESCRIPTION
+f32308053a2553ac8ed56d0d7248dceb *ChangeLog
+23c9fff8b6e990010b035e3692aeceba *DESCRIPTION
 29e2e3a360bfabed5c9a84fc6cbfc8da *NAMESPACE
 a49dc723b11b7404042fe813bfcab414 *R/classify_model.R
 84d7336bc6a8d866288d526a5cc17669 *R/classify_models.R
 91a927a7c8e93cd755d30a6656537e94 *R/create_analytics.R
 4ca843c6c36cc85e5065f696cc99f671 *R/create_corpus.R
 856e5c7c49b9a2ad0a7db41bb0cb3313 *R/create_ensembleSummary.R
-6c86fffc720497ac82ef2c09f9ed8fcd *R/create_matrix.R
+40ac3b50ca0a4c896286f215b8bf595b *R/create_matrix.R
 01205062b6f6c78ed1995933a0b25a9f *R/create_precisionRecallSummary.R
 6f286a02f218365eb3422b73486511e0 *R/create_scoreSummary.R
 9ac6d88431a51ddabba87a237914a9f1 *R/cross_validate.R
@@ -36,7 +36,7 @@ c9b7d3f49cc7cc7301e5327835ab9a97 *man/analytics_container_virgin-class.Rd
 b2c696dc556bdab67ebf218488058103 *man/create_analytics.Rd
 29c7e24bf0f05b38d5ebdc862534a685 *man/create_corpus.Rd
 c000e977a000a00f1294c3b25ed6a22e *man/create_ensembleSummary.Rd
-96614a7eebce97a8ad54ea4863ced344 *man/create_matrix.Rd
+11cdad6719778f880568cfe3130e3a3e *man/create_matrix.Rd
 5e7e3946d5a3dee69e5b94ad4bbb9e45 *man/create_precisionRecallSummary.Rd
 09ec4756277affce1272d9075504b81f *man/create_scoreSummary.Rd
 de703794691e874765fb51109f613fe9 *man/cross_validate.Rd
