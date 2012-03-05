@@ -1,12 +1,12 @@
 ea5d4843511568af33b4480e079a12f6 *CHANGELOG
-1407e049a2190ebdb4edd8608e82a75a *DESCRIPTION
+9b8617ef767100b5cfb9b260a411d447 *DESCRIPTION
 668d8b403455e8223c224f90e448ff64 *NAMESPACE
 008f3ffec41fce760bd4b6e1829eacc6 *R/classify_model.R
 a61f15a0ee263859dd1486f0d1818e60 *R/classify_models.R
 7beacab0202a21926118f40eb11b4baf *R/create_analytics.R
 c12449084775fe45b9c3f55dab248cd9 *R/create_container.R
 856e5c7c49b9a2ad0a7db41bb0cb3313 *R/create_ensembleSummary.R
-8261f7aafbd39daf8c382f070ce26413 *R/create_matrix.R
+7f1d4ae7f1b59e3d66de7fcd66df05c2 *R/create_matrix.R
 55dc260bc2c806b0a25b5f2ff80a1089 *R/create_precisionRecallSummary.R
 a9bef6acabf14add108a1d5321a1431e *R/create_scoreSummary.R
 9a5eac8a4f3228d11fb5b6d0aa098500 *R/cross_validate.R

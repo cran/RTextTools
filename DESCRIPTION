@@ -1,8 +1,8 @@
 Package: RTextTools
 Type: Package
 Title: Automatic Text Classification via Supervised Learning
-Version: 1.4.0
-Date: 2012-09-22
+Version: 1.4.1
+Date: 2012-03-05
 Author: Timothy P. Jurka, Loren Collingwood, Amber E. Boydstun,
         Emiliano Grossman, Wouter van Atteveldt
 Maintainer: Timothy P. Jurka <tpjurka@ucdavis.edu>
@@ -19,6 +19,7 @@ Description: RTextTools is a machine learning package for automatic
         documentation.
 License: GPL-3
 URL: http://www.rtexttools.com/
-Packaged: 2012-09-22 19:17:07 UTC; timjurka
+Packaged: 2013-03-06 06:59:07 UTC; timjurka
+NeedsCompilation: yes
 Repository: CRAN
-Date/Publication: 2012-09-23 06:36:30
+Date/Publication: 2013-03-06 11:30:07

@@ -15,7 +15,7 @@ create_matrix <- function(textColumns, language="english", minDocFreq=1, maxDocF
     	control <- append(control,list(tokenize=scan_tokenizer),after=4)
     }
     
-    if (stemWords == TRUE) control <- append(control,list(stemming=stem_words),after=7)
+    if (stemWords == TRUE && ngramLength == 1) control <- append(control,list(stemming=stem_words),after=7)
     
     trainingColumn <- apply(as.matrix(textColumns),1,paste,collapse=" ")
     trainingColumn <- sapply(as.vector(trainingColumn,mode="character"),iconv,to="UTF8",sub="byte")
