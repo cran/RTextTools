@@ -1,14 +1,13 @@
 Package: RTextTools
 Type: Package
 Title: Automatic Text Classification via Supervised Learning
-Version: 1.3.6
-Date: 2012-02-01
+Version: 1.3.7
+Date: 2012-04-03
 Author: Timothy P. Jurka, Loren Collingwood, Amber E. Boydstun,
         Emiliano Grossman, Wouter van Atteveldt
 Maintainer: Timothy P. Jurka <tpjurka@ucdavis.edu>
 Depends: R (>= 2.14.0), methods, SparseM, randomForest, tree, nnet, tm,
-        e1071, ipred, caTools, maxent, glmnet, Rstem, tau
-Suggests: RODBC
+        e1071, ipred, caTools, maxent, glmnet, tau
 Description: RTextTools is a machine learning package for automatic
         text classification that makes it simple for novice users to
         get started with machine learning, while allowing experienced
@@ -21,6 +20,6 @@ Description: RTextTools is a machine learning package for automatic
 License: GPL-3
 URL: http://www.rtexttools.com/
 LazyLoad: yes
-Packaged: 2012-01-31 23:27:11 UTC; timjurka
+Packaged: 2012-04-03 07:06:29 UTC; timjurka
 Repository: CRAN
-Date/Publication: 2012-02-01 08:13:24
+Date/Publication: 2012-04-03 21:01:58

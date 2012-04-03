@@ -1,3 +1,14 @@
+2012-04-01  Timothy P. Jurka  <tpjurka@ucdavis.edu>
+
+	* DESCRIPTION: Release 1.3.7
+	* Fixed create_matrix() function bug regarding stemming
+	* Added Rstem into RTextTools for easier installation from CRAN
+	* Added support for reading from folders to read_data() function
+	* Optimized recall_accuracy() function
+	* Removed support for ODBC connections due to multiple bugs
+	* Updated DESCRIPTION file
+	* Updated NAMESPACE file
+
 2012-02-01  Timothy P. Jurka  <tpjurka@ucdavis.edu>
 
 	* DESCRIPTION: Release 1.3.6

@@ -1,36 +1,49 @@
 read_data <-
-function(filename, tablename=NULL, type=c("csv","tab","accdb","mdb"), ...) {
-	read_access <- function(accessdata, tablename, path = ".", adb_vers = 2007, ...) 
-	{
-		Call <- match.call()
-		index <- match(c("accessdata", "tablename", "path"), names(Call), nomatch = 0)
-		if (index[1] == 0) stop("Please specify a Microsoft Access database to be used.")
-		if (index[2] == 0) stop("Please specify a table you'd like to retrieve from the database.")
-		
-		oldwd <- getwd()
-		setwd(path)
-		
-		channel <- odbcDriverConnect(accessdata, rows_at_time = 1)
-		
-		dataframe <- sqlFetch(channel, tablename)
-		close(channel)
-		
-		setwd(oldwd)
-		
-		return(dataframe)
-	}
+function(filepath, type=c("csv","delim","folder"), index=NULL, ...) {    
+    if (type=="csv") { data <- read.csv(filepath,...) # CSV FILES
+    } else if (type=="delim") { data <- read.delim(filepath,...) # TAB-DELIMITED FILES
+	} else if (type=="folder") { 
+        if (is.null(index)) stop("Must supply an index if using the folder option.")
+        
+        labels <- read.csv(index,header=FALSE)
+        files <- list.files(path=filepath,full.names=TRUE)
+        
+        frame <- c()
+        for (file in labels[,1]) {
+            filename <- NULL
+            for (file2 in files) {
+                if (basename(file2) == file) {
+                    filename <- file2
+                    break
+                }
+            }
+            
+            if (is.null(filename)) stop("Could not corresponding file from index file in folder.")
+            
+            lines <- readLines(filename)
+            text <- paste(lines,collapse="\n")
+            frame <- append(frame,text)
+        }
+        
+        if (nrow(labels) == length(files)) {
+            data <- data.frame(Text.Data=frame,Labels=labels[,2])
+        } else if (nrow(labels) < length(files)) {
+            diff <- length(files)-nrow(labels)
+            fill <- as.data.frame(rep(NA,diff))
+            
+            raw_labels <- as.data.frame(labels[,2])
+            colnames(fill) <- colnames(raw_labels)
+            print(raw_labels)
+            print(fill)
+            labels_fixed <- rbind(raw_labels,fill)
+            print(labels_fixed)
+            
+            data <- data.frame(Text.Data=frame,Labels=labels_fixed)
+        } else {
+            stop("There are more labels than documents in the index file.")
+        }
+        
+    }
 	
-	
-	
-    Call <- match.call()
-    index <- match(c("filename", "tablename", "type"), names(Call), nomatch = 0)
-    if (index[1] == 0) stop("Please specify the path to a CSV, tab-delimited file, or Access database.")
-    if (index[3] == 0) stop("Please specify the type of file used for input. Choices are: 'csv', 'tab', 'accdb', or 'mdb'.")
-
-    # CONDITIONAL INPUT OF DATA
-    if (type=="csv") { rawData <- read.csv(filename,header=TRUE) # CSV FILES
-    } else if (type=="tab") { rawData <- read.delim(filename,header=TRUE, sep="\t") # TAB-DELIMITED FILES
-	} else { rawData <- read_access(filename, tablename, path=".", adb_vers=2007) } # ACCESS DATABASES
-	
-    return(rawData)
+    return(data)
 }

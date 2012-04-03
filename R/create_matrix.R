@@ -2,7 +2,7 @@ create_matrix <- function(textColumns, language="english", minDocFreq=1, maxDocF
 	
     stem_words <- function(x) {
         split <- strsplit(x," ")
-        return(wordStem(split[[1]],language=language))
+        return(wordStem(unlist(split),language=language))
     }
     
     tokenize_ngrams <- function(x, n=ngramLength) return(rownames(as.data.frame(unclass(textcnt(x,method="string",n=n)))))
