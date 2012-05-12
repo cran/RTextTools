@@ -32,6 +32,9 @@ extern int russian_stem(struct SN_env *);
 extern SN_env *finnish_create_env(void);
 extern void finnish_close_env(SN_env*);
 extern int finnish_stem(struct SN_env *);
+extern SN_env *italian_create_env(void);
+extern void italian_close_env(SN_env*);
+extern int italian_stem(struct SN_env *);
 StemLanguage languages[] = {
 
 {"french", &french_create_env, &french_close_env, &french_stem},
@@ -45,4 +48,5 @@ StemLanguage languages[] = {
 {"danish", &danish_create_env, &danish_close_env, &danish_stem},
 {"russian", &russian_create_env, &russian_close_env, &russian_stem},
 {"finnish", &finnish_create_env, &finnish_close_env, &finnish_stem},
+{"italian", &italian_create_env, &italian_close_env, &italian_stem},
 };

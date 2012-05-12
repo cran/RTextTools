@@ -1,5 +1,5 @@
-c814bd1b20a08fca47ebfa03758a5dcf *ChangeLog
-52863d70175bd08c8cdf9fc50f382ae1 *DESCRIPTION
+c35c9b75fab66d0c08de0414fb41c55f *ChangeLog
+b722c24243c3d0eee7e08b3a35b8e820 *DESCRIPTION
 67c4eb9d45230c21500d3ced0e5e7304 *NAMESPACE
 a49dc723b11b7404042fe813bfcab414 *R/classify_model.R
 84d7336bc6a8d866288d526a5cc17669 *R/classify_models.R
@@ -29,14 +29,6 @@ b65d2c93e0ea86ad2f4b7168bf1c1b32 *inst/examples/conference_demo.R
 90e025248904b57b5fce0ed6c3d14896 *inst/examples/normal_demo.R
 fa24bd02d2c62bd8be7efb2971f9123e *inst/examples/saved_model_demo.R
 1f49dc90fb2db56d6edce7dbd06821bb *inst/examples/simple_demo.R
-c38cd3da08d8c7bc3a20f70ace51e990 *inst/scripts/README.html
-4a153ce005385d197caf41356547a9fd *inst/scripts/download
-6c7b257b071100d5facbc6fd3b5490ff *inst/words/english/output.txt
-022b932384f45d54798fd50ec35038f5 *inst/words/english/stop.txt
-7ed2bd94b0048008134a2903b0cfd6f8 *inst/words/english/voc.txt
-ecd474ca466d7f8ac8541baab27392ad *inst/words/french/output.txt
-7044f02238ea346702d32af0dabb804d *inst/words/french/stop.txt
-fbc25f515e3138d044f1ee03773ed0f1 *inst/words/french/voc.txt
 196d8d41427ad2a26b04b08963c04143 *man/NYTimes.Rd
 9d4540420663ce569ac4929d3a171670 *man/USCongress.Rd
 bd67b7a512697151fcf54076e066e0ae *man/analytics_container-class.Rd
@@ -60,7 +52,7 @@ ed69cf0d37f7f365e28ec48bca40a134 *man/train_models.Rd
 d31d1acd0c742f4d99853b03f640cfac *man/wizard_read_data.Rd
 8e0cef1241a75dae7c74b4cacfd57ff0 *man/wizard_train_classify.Rd
 b7dd3ee78af8d38fc1ee4dce8993c5b2 *man/wordStem.Rd
-81414f42a19a17e5754cd19cc329a02e *src/Languages.h
+6c2ce8246b2cd55ab2e4042991c5737e *src/Languages.h
 f790d2000104881853b326d7bfe553c3 *src/Makevars
 94ed6b4e1f478b2fc2f932eab8513107 *src/api.c
 3dbef8bef951bb6df34fbb35ba9f0814 *src/api.h
@@ -77,6 +69,8 @@ fe8c0876530e32aa3adb1f714fbebd35 *src/french_stem.h
 c5356123a126ad814a3859d3e703a254 *src/german_stem.c
 b1f892a708c0e52331227054ca3445fe *src/german_stem.h
 cf64f2d182cfb6402330f07db0719acb *src/header.h
+3403b718321142b3d2cc33c5ac1da424 *src/italian_stem.c
+6bbcaadeb1342be33ea14f4462cd6076 *src/italian_stem.h
 1c40b5ad28d98e16fa9ecf15fb16d967 *src/mytest.c
 40a3b33b0894ccb5374dcb8cdaa9435b *src/norwegian_stem.c
 f88a4a120c4f8c9ddd4818855eebdb33 *src/norwegian_stem.h
