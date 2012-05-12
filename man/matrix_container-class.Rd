@@ -12,7 +12,7 @@ An S4 class containing all information necessary to train, classify, and generat
   Objects could in principle be created by calls of the 
   form \code{new("matrix_container", ...)}.
   The preferred form is to have them created via a call to 
-  \code{\link{create_corpus}}.
+  \code{\link{create_container}}.
 }
 \section{Slots}{
   \describe{
@@ -35,19 +35,19 @@ Timothy P. Jurka <tpjurka@ucdavis.edu>
 }
 \examples{
 library(RTextTools)
-data <- read_data(system.file("data/NYTimes.csv.gz",package="RTextTools"),type="csv")
-data <- data[sample(1:3100,size=100,replace=FALSE),]
-matrix <- create_matrix(cbind(data$Title,data$Subject), language="english", 
+data(NYTimes)
+data <- NYTimes[sample(1:3100,size=100,replace=FALSE),]
+matrix <- create_matrix(cbind(data["Title"],data["Subject"]), language="english", 
 removeNumbers=TRUE, stemWords=FALSE, weighting=weightTfIdf)
-corpus <- create_corpus(matrix,data$Topic.Code,trainSize=1:75, testSize=76:100, 
+container <- create_container(matrix,data$Topic.Code,trainSize=1:75, testSize=76:100, 
 virgin=FALSE)
 
-corpus@training_matrix
-corpus@training_codes
-corpus@classification_matrix
-corpus@testing_codes
-corpus@column_names
-corpus@virgin
+container@training_matrix
+container@training_codes
+container@classification_matrix
+container@testing_codes
+container@column_names
+container@virgin
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

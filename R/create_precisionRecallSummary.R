@@ -1,4 +1,4 @@
-create_precisionRecallSummary <- function(corpus, classification_results, b_value=1) {	
+create_precisionRecallSummary <- function(container, classification_results, b_value=1) {	
 	confusion <- function(true,pred) {
 		conf_out <- table(factor(true,levels=sort(unique(true))),factor(pred,levels=sort(unique(true))))
 		return(conf_out)
@@ -33,9 +33,9 @@ create_precisionRecallSummary <- function(corpus, classification_results, b_valu
 		return(fscores_out)
 	}
 	
-	scores <- create_scoreSummary(corpus, classification_results)
+	scores <- create_scoreSummary(container, classification_results)
 	
-	true <- corpus@testing_codes
+	true <- container@testing_codes
 	columns <- colnames(scores)
 	results <- c()
 	

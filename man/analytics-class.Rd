@@ -1,16 +1,16 @@
-\name{analytics_container-class}
+\name{analytics-class}
 \docType{class}
-\alias{analytics_container-class}
+\alias{analytics-class}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 an S4 class containing the analytics for a classified set of documents.
 }
 \description{
-An \code{S4 class} containing the analytics for a classified set of documents. This includes a label summary, document summary, ensemble summary, and algorithm summary. This class is returned if \code{virgin=FALSE} in \code{\link{create_corpus}}.
+An \code{S4 class} containing the analytics for a classified set of documents. This includes a label summary, document summary, ensemble summary, and algorithm summary. This class is returned if \code{virgin=FALSE} in \code{\link{create_container}}.
 }
 \section{Objects from the Class}{
   Objects could in principle be created by calls of the 
-  form \code{new("analytics_container", ...)}.
+  form \code{new("analytics", ...)}.
   The preferred form is to have them created via a call to 
   \code{\link{create_analytics}}.
 }
@@ -31,20 +31,17 @@ Timothy P. Jurka <tpjurka@ucdavis.edu>
 }
 \examples{
 library(RTextTools)
-data <- read_data(system.file("data/NYTimes.csv.gz",package="RTextTools"),type="csv")
-data <- data[sample(1:3100,size=100,replace=FALSE),]
-matrix <- create_matrix(cbind(data$Title,data$Subject), language="english", 
+data(NYTimes)
+data <- NYTimes[sample(1:3100,size=100,replace=FALSE),]
+matrix <- create_matrix(cbind(data["Title"],data["Subject"]), language="english", 
 removeNumbers=TRUE, stemWords=FALSE, weighting=weightTfIdf)
-corpus <- create_corpus(matrix,data$Topic.Code,trainSize=1:75, testSize=76:100, 
+container <- create_container(matrix,data$Topic.Code,trainSize=1:75, testSize=76:100, 
 virgin=FALSE)
-models <- train_models(corpus, algorithms=c("MAXENT","SVM"))
-results <- classify_models(corpus, models)
-analytics <- create_analytics(corpus, results)
+models <- train_models(container, algorithms=c("MAXENT","SVM"))
+results <- classify_models(container, models)
+analytics <- create_analytics(container, results)
 
-analytics@label_summary
-analytics@document_summary
-analytics@algorithm_summary
-analytics@ensemble_summary
+summary(analytics)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

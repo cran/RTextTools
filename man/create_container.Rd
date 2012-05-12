@@ -1,14 +1,14 @@
-\name{create_corpus}
-\alias{create_corpus}
+\name{create_container}
+\alias{create_container}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-creates a corpus for training, classifying, and analyzing documents.
+creates a container for training, classifying, and analyzing documents.
 }
 \description{
-Given a \code{DocumentTermMatrix} from the \pkg{tm} package and corresponding document labels, creates a corpus of class \code{\link{matrix_container-class}} that can be used for training and classification (i.e. \code{\link{train_model}}, \code{\link{train_models}}, \code{\link{classify_model}}, \code{\link{classify_models}})
+Given a \code{DocumentTermMatrix} from the \pkg{tm} package and corresponding document labels, creates a container of class \code{\link{matrix_container-class}} that can be used for training and classification (i.e. \code{\link{train_model}}, \code{\link{train_models}}, \code{\link{classify_model}}, \code{\link{classify_models}})
 }
 \usage{
-create_corpus(matrix, labels, trainSize=NULL, testSize=NULL, virgin)
+create_container(matrix, labels, trainSize=NULL, testSize=NULL, virgin)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -29,18 +29,18 @@ A logical (\code{TRUE} or \code{FALSE}) specifying whether to treat the classifi
 }
 }
 \value{
-A corpus of class \code{\link{matrix_container-class}} that can be passed into other functions such as \code{\link{train_model}}, \code{\link{train_models}}, \code{\link{classify_model}}, \code{\link{classify_models}}, \code{\link{wizard_train_classify}}, and \code{\link{create_analytics}}.
+A container of class \code{\link{matrix_container-class}} that can be passed into other functions such as \code{\link{train_model}}, \code{\link{train_models}}, \code{\link{classify_model}}, \code{\link{classify_models}}, and \code{\link{create_analytics}}.
 }
 \author{
 Timothy P. Jurka <tpjurka@ucdavis.edu>, Loren Collingwood <lorenc2@uw.edu>
 }
 \examples{
 library(RTextTools)
-data <- read_data(system.file("data/NYTimes.csv.gz",package="RTextTools"),type="csv")
-data <- data[sample(1:3100,size=100,replace=FALSE),]
-matrix <- create_matrix(cbind(data$Title,data$Subject), language="english", 
+data(NYTimes)
+data <- NYTimes[sample(1:3100,size=100,replace=FALSE),]
+matrix <- create_matrix(cbind(data["Title"],data["Subject"]), language="english", 
 removeNumbers=TRUE, stemWords=FALSE, weighting=weightTfIdf)
-corpus <- create_corpus(matrix,data$Topic.Code,trainSize=1:75, testSize=76:100, 
+container <- create_container(matrix,data$Topic.Code,trainSize=1:75, testSize=76:100, 
 virgin=FALSE)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

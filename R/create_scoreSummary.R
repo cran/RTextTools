@@ -1,4 +1,4 @@
-create_scoreSummary <- function(corpus, classification_results) {
+create_scoreSummary <- function(container, classification_results) {
 	labels <- c()
 	probs <- c()
 	
@@ -12,8 +12,8 @@ create_scoreSummary <- function(corpus, classification_results) {
 	
 	best_labels <- c()
 	best_probs <- c()
-	agree_score <- c()
-	unique <- sort(unique(corpus@training_codes))
+	agree_scores <- c()
+	unique <- sort(unique(container@training_codes))
 	for (i in 1:nrow(classification_results)) {
 		row_labels <- labels[i,]
 		row_probs <- probs[i,]
@@ -31,10 +31,16 @@ create_scoreSummary <- function(corpus, classification_results) {
 			create_label_name <- paste(parse_prob_name[[1]][1],"_LABEL",sep="")
 		}
 		
-		best_probs <- append(best_probs,classification_results[create_label_name][i,])
-		best_labels <- append(best_labels,as.vector(unique[which.max(dist)]))
-		agree_score <- append(agree_score,as.vector(max(dist)))
+		agree_score <- as.vector(max(dist))
+		best_label <- as.vector(unique[which.max(dist)])
+		best_prob <- as.vector(classification_results[create_label_name][i,])
+
+		if (agree_score == 1) best_label <- best_prob
+		
+		best_probs <- append(best_probs,best_prob)
+		agree_scores <- append(agree_scores,agree_score)
+		best_labels <- append(best_labels,best_label)
 	}
 	
-	return(cbind(labels,BEST_LABEL=as.numeric(best_labels),BEST_PROB=best_probs, NUM_AGREE=agree_score))
+	return(cbind(labels,BEST_LABEL=as.numeric(best_labels),BEST_PROB=best_probs, NUM_AGREE=agree_scores))
 }

@@ -33,6 +33,6 @@ Loren Collingwood <lorenc2@uw.edu>, Timothy P. Jurka <tpjurka@ucdavis.edu>
 }
 \examples{
 library(RTextTools)
-data <- read_data(system.file("data/NYTimes.csv.gz",package="RTextTools"),type="csv")
+data <- read_data(system.file("data/NYTimes.csv.gz",package="RTextTools"),type="csv",sep=";")
 }
 \keyword{method}

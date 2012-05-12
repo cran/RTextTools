@@ -1,11 +1,8 @@
 .onLoad <-
 function(libname, pkgname) {
-	options(warn=-1)
-	options(stringsAsFactors=FALSE)
-
 	setClass("matrix_container",representation(training_matrix="matrix.csr", classification_matrix="matrix.csr", training_codes="factor", testing_codes="factor", column_names="vector", virgin="logical"))
-	setClass("analytics_container",representation(label_summary="data.frame", document_summary="data.frame", algorithm_summary="data.frame", ensemble_summary="matrix"))
-	setClass("analytics_container_virgin",representation(label_summary="data.frame", document_summary="data.frame"))
+	setClass("analytics",representation(label_summary="data.frame", document_summary="data.frame", algorithm_summary="data.frame", ensemble_summary="matrix"))
+	setClass("analytics_virgin",representation(label_summary="data.frame", document_summary="data.frame"))
 }
 
 .Random.seed <-

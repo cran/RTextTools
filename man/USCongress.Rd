@@ -28,9 +28,6 @@ A \code{data.frame} containing five columns.
 \url{http://www.congressionalbills.org/}
 }
 \examples{
-# READ THE CSV
-data <- read.csv(system.file("data/USCongress.csv.gz",package="RTextTools"))
-# ALTERNATIVELY, USE THE data() FUNCTION
 data(USCongress)
 }
 \keyword{datasets}

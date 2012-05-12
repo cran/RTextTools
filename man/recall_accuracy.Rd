@@ -26,15 +26,15 @@ Loren Collingwood <lorenc2@uw.edu>, Timothy P. Jurka <tpjurka@ucdavis.edu>
 
 \examples{
 library(RTextTools)
-data <- read_data(system.file("data/NYTimes.csv.gz",package="RTextTools"),type="csv")
-data <- data[sample(1:3100,size=100,replace=FALSE),]
-matrix <- create_matrix(cbind(data$Title,data$Subject), language="english", 
+data(NYTimes)
+data <- NYTimes[sample(1:3100,size=100,replace=FALSE),]
+matrix <- create_matrix(cbind(data["Title"],data["Subject"]), language="english", 
 removeNumbers=TRUE, stemWords=FALSE, weighting=weightTfIdf)
-corpus <- create_corpus(matrix,data$Topic.Code,trainSize=1:75, testSize=76:100, 
+container <- create_container(matrix,data$Topic.Code,trainSize=1:75, testSize=76:100, 
 virgin=FALSE)
-models <- train_models(corpus, algorithms=c("MAXENT","SVM"))
-results <- classify_models(corpus, models)
-analytics <- create_analytics(corpus, results)
+models <- train_models(container, algorithms=c("MAXENT","SVM"))
+results <- classify_models(container, models)
+analytics <- create_analytics(container, results)
 recall_accuracy(analytics@document_summary$MANUAL_CODE,
 analytics@document_summary$GLMNET_LABEL)
 recall_accuracy(analytics@document_summary$MANUAL_CODE,

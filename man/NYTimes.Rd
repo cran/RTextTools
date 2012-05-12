@@ -28,9 +28,6 @@ A \code{data.frame} containing five columns.
 \url{http://www.amberboydstun.com/}
 }
 \examples{
-# READ THE CSV
-data <- read.csv(system.file("data/NYTimes.csv.gz",package="RTextTools"))
-# ALTERNATIVELY, USE THE data() FUNCTION
 data(NYTimes)
 }
 \keyword{datasets}

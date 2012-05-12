@@ -13,16 +13,18 @@ import(tau)
 
 exportClasses(
               matrix_container,
-              analytics_container,
-              analytics_container_virgin
+              analytics,
+              analytics_virgin
               )
 
 export(wordStem, getStemLanguages)
 export(classify_model, classify_models)
-export(create_analytics, create_corpus, create_ensembleSummary, create_matrix, create_precisionRecallSummary, create_scoreSummary)
+export(create_analytics, create_container, create_ensembleSummary, create_matrix, create_precisionRecallSummary, create_scoreSummary)
 export(cross_validate)
-export(print_algorithms)
+export(print_algorithms, summary.analytics, summary.analytics_virgin)
 export(read_data)
 export(recall_accuracy)
 export(train_models, train_model)
-export(wizard_read_data, wizard_train_classify)
+
+S3method("summary","analytics")
+S3method("summary","analytics_virgin")

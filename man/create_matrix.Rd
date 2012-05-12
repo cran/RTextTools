@@ -2,10 +2,10 @@
 \alias{create_matrix}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-creates a document-term matrix to be passed into create_corpus().
+creates a document-term matrix to be passed into create_container().
 }
 \description{
-Creates an object of class \code{DocumentTermMatrix} from \pkg{tm} that can be used in the \code{\link{create_corpus}} function.
+Creates an object of class \code{DocumentTermMatrix} from \pkg{tm} that can be used in the \code{\link{create_container}} function.
 }
 \usage{
 create_matrix(textColumns, language="english", minDocFreq=1, maxDocFreq=Inf, 
@@ -70,9 +70,9 @@ Timothy P. Jurka <tpjurka@ucdavis.edu>, Loren Collingwood <lorenc2@uw.edu>
 }
 \examples{
 library(RTextTools)
-data <- read_data(system.file("data/NYTimes.csv.gz",package="RTextTools"),type="csv")
-data <- data[sample(1:3100,size=100,replace=FALSE),]
-matrix <- create_matrix(cbind(data$Title,data$Subject), language="english", 
+data(NYTimes)
+data <- NYTimes[sample(1:3100,size=100,replace=FALSE),]
+matrix <- create_matrix(cbind(data["Title"],data["Subject"]), language="english", 
 removeNumbers=TRUE, stemWords=FALSE, weighting=weightTfIdf)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

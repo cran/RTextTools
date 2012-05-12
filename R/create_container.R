@@ -1,4 +1,4 @@
-create_corpus <- function(matrix,labels,trainSize=NULL,testSize=NULL,virgin) {
+create_container <- function(matrix,labels,trainSize=NULL,testSize=NULL,virgin) {
 	if (is.null(trainSize) && is.null(testSize)) stop("You must specify either a trainSize or testSize parameter, or both.")
 	if (is.null(trainSize)) trainSize <- testSize
 	if (is.null(testSize)) testSize <- trainSize
