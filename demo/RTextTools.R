@@ -38,17 +38,6 @@ analytics <- create_analytics(container,cbind(SVM_CLASSIFY, SLDA_CLASSIFY,
 	BOOSTING_CLASSIFY, BAGGING_CLASSIFY, RF_CLASSIFY, GLMNET_CLASSIFY, 
 	NNET_CLASSIFY, TREE_CLASSIFY, MAXENT_CLASSIFY))
 
-# DEMONSTRATION OF CROSS-VALIDATION
-SVM <- cross_validate(container,4,"SVM")
-MAXENT <- cross_validate(container,4,"MAXENT")
-GLMNET <- cross_validate(container,4,"GLMNET")
-SLDA <- cross_validate(container,4,"SLDA")
-BAGGING <- cross_validate(container,4,"BAGGING")
-BOOSTING <- cross_validate(container,4,"BOOSTING")
-RF <- cross_validate(container,4,"RF")
-NNET <- cross_validate(container,4,"NNET")
-TREE <- cross_validate(container,4,"TREE")
-
 # DEMONSTRATION OF HOW TO WRITE THE DATA OUT TO A .CSV FILE
 # write.csv(analytics@document_summary,"DocumentSummary.csv")
 # write.csv(analytics@topic_summary,"TopicSummary.csv")

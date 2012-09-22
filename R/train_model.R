@@ -22,8 +22,7 @@ train_model <- function(container,algorithm=c("SVM","SLDA","BOOSTING","BAGGING",
         } else if (algorithm=="RF") {
             model <- randomForest(x=as.matrix(container@training_matrix), y=container@training_codes, ntree=ntree)
         } else if (algorithm=="GLMNET") {
-			training_matrix <- as(as.matrix.csc(container@training_matrix),"dgCMatrix")
-			#colnames(training_matrix) <- container@column_names
+			training_matrix <- as(container@training_matrix,"sparseMatrix")
             model <- glmnet(x=training_matrix, y=container@training_codes, family="multinomial", maxit=maxitglm)
         } else if (algorithm=="TREE") {
             model <- tree(container.training_codes ~ ., data=data.frame(as.matrix(container@training_matrix),container@training_codes))

@@ -1,7 +1,7 @@
 cross_validate <- function(container,nfold,algorithm=c("SVM","SLDA","BOOSTING","BAGGING","RF","GLMNET","TREE","NNET","MAXENT"),seed=NA,
 							method="C-classification", cross=0, cost=100, kernel="radial",  # SVM PARAMETERS
 							maxitboost=100, # BOOSTING PARAMETERS
-							maxitglm=500, # GLMNET PARAMETERS
+							maxitglm=10^5, # GLMNET PARAMETERS
 							size=1,maxitnnet=1000,MaxNWts=10000,rang=0.1,decay=5e-4, # NNET PARAMETERS
 							ntree=200, # RF PARAMETERS
 							l1_regularizer=0.0,l2_regularizer=0.0,use_sgd=FALSE,set_heldout=0,verbose=FALSE # MAXENT PARAMETERS
@@ -33,7 +33,7 @@ cross_validate <- function(container,nfold,algorithm=c("SVM","SLDA","BOOSTING","
         
         if (algorithm=="RF") {
 			alldata <- rbind(as.matrix(container@training_matrix),as.matrix(container@classification_matrix))
-			colnames(alldata) <- container@column_names
+			#colnames(alldata) <- container@column_names
 			data_and_codes <-cbind(alldata,allcodes)
             model <- randomForest(as.factor(allcodes)~.,data=data_and_codes[rand!=i,], ntree=ntree)
             pred <- predict(model,newdata=alldata[rand==i,])
@@ -56,7 +56,7 @@ cross_validate <- function(container,nfold,algorithm=c("SVM","SLDA","BOOSTING","
         } else
 		if (algorithm=="BAGGING") {
 			alldata <- rbind(as.matrix(container@training_matrix),as.matrix(container@classification_matrix))
-			colnames(alldata) <- container@column_names
+			#colnames(alldata) <- container@column_names
 			data_and_codes <-cbind(alldata,allcodes)
             model <- bagging(as.factor(allcodes)~.,data=data.frame(data_and_codes[rand!=i,]))
             pred <- predict(model,newdata=alldata[rand==i,])

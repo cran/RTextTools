@@ -3,38 +3,30 @@
 
 library(RTextTools)
 
+data(NYTimes)
 
+matrix <- create_matrix(cbind(NYTimes["Title"],NYTimes["Subject"]), language="english")
 
-data <- read_data(system.file("data/NYTimes.csv.gz",package="RTextTools"), type="csv")
-
-
-
-matrix <- create_matrix(cbind(data$Title,data$Subject), language="english")
-
-corpus <- create_corpus(matrix,data$Topic.Code,trainSize=1:2500, testSize=2501:3100, virgin=FALSE)
-
+container <- create_container(matrix,NYTimes$Topic.Code,trainSize=1:2500, testSize=2501:3100, virgin=FALSE)
 
 
 # TRAINING
-svm_model <- train_model(corpus,"SVM")
-maxent_model <- train_model(corpus,"MAXENT")
-
+svm_model <- train_model(container,"SVM")
+maxent_model <- train_model(container,"MAXENT")
 
 
 # PREDICTION
-svm_results <- classify_model(corpus,svm_model)
-maxent_results <- classify_model(corpus,maxent_model)
-
+svm_results <- classify_model(container,svm_model)
+maxent_results <- classify_model(container,maxent_model)
 
 
 # ANALYTICS
-analytics <- create_analytics(corpus,cbind(svm_results,maxent_results))
+analytics <- create_analytics(container,cbind(svm_results,maxent_results))
 
 analytics@label_summary
 analytics@algorithm_summary
 analytics@document_summary
 analytics@ensemble_summary
-
 
 
 # WRITE RESULTS TO CSV

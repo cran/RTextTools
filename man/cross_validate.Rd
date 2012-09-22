@@ -11,7 +11,7 @@ Performs n-fold cross-validation of specified algorithm.
 cross_validate(container, nfold, algorithm = c("SVM", "SLDA", "BOOSTING", 
 "BAGGING", "RF", "GLMNET", "TREE", "NNET", "MAXENT"), seed = NA, 
 method = "C-classification", cross = 0, cost = 100, kernel = "radial", 
-maxitboost = 100, maxitglm = 500, size = 1, maxitnnet = 1000, MaxNWts = 10000, 
+maxitboost = 100, maxitglm = 10^5, size = 1, maxitnnet = 1000, MaxNWts = 10000, 
 rang = 0.1, decay = 5e-04, ntree = 200, l1_regularizer = 0, l2_regularizer = 0, 
 use_sgd = FALSE, set_heldout = 0, verbose = FALSE)
 }

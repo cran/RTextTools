@@ -6,38 +6,38 @@ library(RTextTools)
 
 
 # READ THE CSV DATA
-data <- read_data(system.file("data/NYTimes.csv.gz",package="RTextTools"),type="csv")
+data(NYTimes)
 
 
 # [OPTIONAL] SUBSET YOUR DATA TO GET A RANDOM SAMPLE
-data <- data[sample(1:3100,size=3100,replace=FALSE),]
+NYTimes <- NYTimes[sample(1:3100,size=3100,replace=FALSE),]
 
 
 # CREATE A TERM-DOCUMENT MATRIX THAT REPRESENTS WORD FREQUENCIES IN EACH DOCUMENT
 # WE WILL TRAIN ON THE Title and Subject COLUMNS
-matrix <- create_matrix(cbind(data$Title,data$Subject), language="english", removeNumbers=TRUE, stemWords=TRUE, weighting=weightTfIdf)
+matrix <- create_matrix(cbind(NYTimes["Title"],NYTimes["Subject"]), language="english", removeNumbers=TRUE, stemWords=TRUE, weighting=weightTfIdf)
 
 
-# CREATE A CORPUS THAT IS SPLIT INTO A TRAINING SET AND A TESTING SET
+# CREATE A container THAT IS SPLIT INTO A TRAINING SET AND A TESTING SET
 # WE WILL BE USING Topic.Code AS THE CODE COLUMN. WE DEFINE A 2000 
 # ARTICLE TRAINING SET AND A 1000 ARTICLE TESTING SET.
-corpus <- create_corpus(matrix,data$Topic.Code,trainSize=1:3000, testSize=3001:3100,virgin=FALSE)
+container <- create_container(matrix,NYTimes$Topic.Code,trainSize=1:3000, testSize=3001:3100,virgin=FALSE)
 
 
 # THERE ARE TWO METHODS OF TRAINING AND CLASSIFYING DATA.
 # ONE WAY IS TO DO THEM AS A BATCH (SEVERAL ALGORITHMS AT ONCE)
-models <- train_models(corpus, algorithms=c("GLMNET","MAXENT","SVM"))
-results <- classify_models(corpus, models)
+models <- train_models(container, algorithms=c("GLMNET","MAXENT","SVM"))
+results <- classify_models(container, models)
 
 
 # ANOTHER WAY IS TO DO THEM ONE BY ONE.
-glmnet_model <- train_model(corpus,"GLMNET")
-maxent_model <- train_model(corpus,"MAXENT")
-svm_model <- train_model(corpus,"SVM")
+glmnet_model <- train_model(container,"GLMNET")
+maxent_model <- train_model(container,"MAXENT")
+svm_model <- train_model(container,"SVM")
 
-glmnet_results <- classify_model(corpus,glmnet_model)
-maxent_results <- classify_model(corpus,maxent_model)
-svm_results <- classify_model(corpus,svm_model)
+glmnet_results <- classify_model(container,glmnet_model)
+maxent_results <- classify_model(container,maxent_model)
+svm_results <- classify_model(container,svm_model)
 
 # USE print_algorithms() TO SEE ALL AVAILABLE ALGORITHMS.
 print_algorithms()
@@ -45,10 +45,10 @@ print_algorithms()
 
 # VIEW THE RESULTS BY CREATING ANALYTICS
 # IF YOU USED OPTION 1, YOU CAN GENERATE ANALYTICS USING
-analytics <- create_analytics(corpus, results)
+analytics <- create_analytics(container, results)
 
 # IF YOU USED OPTION 2, YOU CAN GENERATE ANALYTICS USING:
-analytics <- create_analytics(corpus,cbind(svm_results,maxent_results))
+analytics <- create_analytics(container,cbind(svm_results,maxent_results))
 
 # RESULTS WILL BE REPORTED BACK IN THE analytics VARIABLE.
 # analytics@algorithm_summary: SUMMARY OF PRECISION, RECALL, F-SCORES, AND ACCURACY SORTED BY TOPIC CODE FOR EACH ALGORITHM

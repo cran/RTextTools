@@ -5,59 +5,59 @@
 library(RTextTools)
 
 # READ THE CSV DATA
-data <- read_data(system.file("data/NYTimes.csv.gz",package="RTextTools"),type="csv")
+data(NYTimes)
 
 
 # [OPTIONAL] SUBSET YOUR DATA TO GET A RANDOM SAMPLE
-data <- data[sample(1:3000,size=3000,replace=FALSE),]
+NYTimes <- NYTimes[sample(1:3000,size=3000,replace=FALSE),]
 
 
 # CREATE A TERM-DOCUMENT MATRIX THAT REPRESENTS WORD FREQUENCIES IN EACH DOCUMENT
 # WE WILL TRAIN ON THE Title and Subject COLUMNS
-matrix <- create_matrix(cbind(data$Title,data$Subject), language="english", removeNumbers=TRUE, stemWords=TRUE, weighting=weightTfIdf)
+matrix <- create_matrix(cbind(NYTimes["Title"],NYTimes["Subject"]), language="english", removeNumbers=TRUE, stemWords=TRUE, weighting=weightTfIdf)
 
-# CREATE A CORPUS THAT IS SPLIT INTO A TRAINING SET AND A TESTING SET
+# CREATE A container THAT IS SPLIT INTO A TRAINING SET AND A TESTING SET
 # WE WILL BE USING Topic.Code AS THE CODE COLUMN. WE DEFINE A 2000 
 # ARTICLE TRAINING SET AND A 1000 ARTICLE TESTING SET.
-corpus <- create_corpus(matrix,data$Topic.Code,trainSize=1:3000,virgin=FALSE)
+container <- create_container(matrix,NYTimes$Topic.Code,trainSize=1:3000,virgin=FALSE)
 
 
 # THERE ARE TWO METHODS OF TRAINING AND CLASSIFYING DATA.
 # ONE WAY IS TO DO THEM AS A BATCH (SEVERAL ALGORITHMS AT ONCE)
-models <- train_models(corpus, algorithms=c("SVM","MAXENT"))
+models <- train_models(container, algorithms=c("SVM","MAXENT"))
 
 # NOW SAVE THE ORIGINAL TERM-DOCUMENT MATRIX AND THE TRAINED MODELS
 save(matrix,file="originalMatrix.Rd")
 save(models,file="trainedModels.Rd")
-rm(list=c("data","matrix","corpus","models")) # DELETE THE OLD DATA NOW THAT IT'S SAVED
+rm(list=c("data","matrix","container","models")) # DELETE THE OLD DATA NOW THAT IT'S SAVED
 
 
 # CLASSIFYING USING THE TRAINED MODELS
 # READ THE CSV DATA
 library(RTextTools)
-data <- read_data(system.file("data/NYTimes.csv.gz",package="RTextTools"),type="csv")
+data(NYTimes)
 
 
 # [OPTIONAL] SUBSET YOUR DATA TO GET A RANDOM SAMPLE
-data <- data[sample(3000:3100,size=100,replace=FALSE),]
+NYTimes <- NYTimes[sample(3000:3100,size=100,replace=FALSE),]
 load("originalMatrix.Rd")
 load("trainedModels.Rd")
 
 # CREATE A TERM-DOCUMENT MATRIX THAT REPRESENTS WORD FREQUENCIES IN EACH DOCUMENT
 # WE WILL TRAIN ON THE Title and Subject COLUMNS
-new_matrix <- create_matrix(cbind(data$Title,data$Subject), language="english", removeNumbers=TRUE, stemWords=TRUE, weighting=weightTfIdf, originalMatrix=matrix)
+new_matrix <- create_matrix(cbind(NYTimes["Title"],NYTimes["Subject"]), language="english", removeNumbers=TRUE, stemWords=TRUE, weighting=weightTfIdf, originalMatrix=matrix)
 
-# CREATE A CORPUS THAT IS SPLIT INTO A TRAINING SET AND A TESTING SET
+# CREATE A container THAT IS SPLIT INTO A TRAINING SET AND A TESTING SET
 # WE WILL BE USING Topic.Code AS THE CODE COLUMN. WE DEFINE A 2000 
 # ARTICLE TRAINING SET AND A 1000 ARTICLE TESTING SET.
-corpus <- create_corpus(new_matrix,data$Topic.Code,testSize=1:100,virgin=FALSE)
+container <- create_container(new_matrix,NYTimes$Topic.Code,testSize=1:100,virgin=FALSE)
 
-results <- classify_models(corpus, models)
+results <- classify_models(container, models)
 
 
 # VIEW THE RESULTS BY CREATING ANALYTICS
 # IF YOU USED OPTION 1, YOU CAN GENERATE ANALYTICS USING
-analytics <- create_analytics(corpus, results)
+analytics <- create_analytics(container, results)
 
 # RESULTS WILL BE REPORTED BACK IN THE analytics VARIABLE.
 # analytics@algorithm_summary: SUMMARY OF PRECISION, RECALL, F-SCORES, AND ACCURACY SORTED BY TOPIC CODE FOR EACH ALGORITHM
