@@ -1,6 +1,6 @@
 useDynLib(RTextTools)
-import(methods)
 import(SparseM)
+import(methods)
 import(randomForest)
 import(tree)
 import(nnet)
@@ -10,6 +10,7 @@ import(ipred)
 import(maxent)
 import(glmnet)
 import(tau)
+import(caTools)
 
 exportClasses(
               matrix_container,

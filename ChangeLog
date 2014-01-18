@@ -1,3 +1,10 @@
+2014-01-12  Timothy P. Jurka   <tpjurka@ucdavis.edu>
+
+	* DESCRIPTION: Release 1.4.2
+	* Fixed import issues to work with R 3.0.2
+	* Updated DESCRIPTION file
+	* Updated NAMESPACE file
+
 2012-09-21  Timothy P. Jurka  <tpjurka@ucdavis.edu>
 
 	* DESCRIPTION: Release 1.4.0

@@ -62,7 +62,7 @@ A \code{logical} parameter to specify whether to strip whitespace.
 A \code{logical} parameter to specify whether to make all text lowercase.
 }
   \item{weighting}{
-Either \code{weightTf} or \code{weightTfIdf}. See package \pkg{tm} for more details.
+Either \code{weightTf} or \code{tm::weightTfIdf}. See package \pkg{tm} for more details.
 }
 }
 \author{
@@ -73,7 +73,7 @@ library(RTextTools)
 data(NYTimes)
 data <- NYTimes[sample(1:3100,size=100,replace=FALSE),]
 matrix <- create_matrix(cbind(data["Title"],data["Subject"]), language="english", 
-removeNumbers=TRUE, stemWords=FALSE, weighting=weightTfIdf)
+removeNumbers=TRUE, stemWords=FALSE, weighting=tm::weightTfIdf)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
