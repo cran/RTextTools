@@ -32,7 +32,7 @@ Only one model may be passed in at a time for classification. See \code{\link{tr
 Returns a \code{data.frame} of predicted codes and probabilities for the specified algorithm.
 }
 \author{
-Loren Collingwood <lorenc2@uw.edu>, Timothy P. Jurka <tpjurka@ucdavis.edu>
+Loren Collingwood <loren.collingwood@gmail.com>, Timothy P. Jurka <tpjurka@ucdavis.edu>
 }
 
 \examples{
@@ -43,8 +43,8 @@ matrix <- create_matrix(cbind(data["Title"],data["Subject"]), language="english"
 removeNumbers=TRUE, stemWords=FALSE, weighting=tm::weightTfIdf)
 container <- create_container(matrix,data$Topic.Code,trainSize=1:75, testSize=76:100, 
 virgin=FALSE)
-maxent_model <- train_model(container,"MAXENT")
-maxent_results <- classify_model(container,maxent_model)
+svm_model <- train_model(container,"SVM")
+svm_results <- classify_model(container,svm_model)
 }
 
 \keyword{method}

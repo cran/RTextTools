@@ -21,7 +21,7 @@ A vector containing the predicted labels, or classified values for each document
 }
 
 \author{
-Loren Collingwood <lorenc2@uw.edu>, Timothy P. Jurka <tpjurka@ucdavis.edu>
+Loren Collingwood, Timothy P. Jurka
 }
 
 \examples{
@@ -32,13 +32,11 @@ matrix <- create_matrix(cbind(data["Title"],data["Subject"]), language="english"
 removeNumbers=TRUE, stemWords=FALSE, weighting=tm::weightTfIdf)
 container <- create_container(matrix,data$Topic.Code,trainSize=1:75, testSize=76:100, 
 virgin=FALSE)
-models <- train_models(container, algorithms=c("MAXENT","SVM"))
+models <- train_models(container, algorithms=c("RF","SVM"))
 results <- classify_models(container, models)
 analytics <- create_analytics(container, results)
 recall_accuracy(analytics@document_summary$MANUAL_CODE,
-analytics@document_summary$GLMNET_LABEL)
-recall_accuracy(analytics@document_summary$MANUAL_CODE,
-analytics@document_summary$MAXENTROPY_LABEL)
+analytics@document_summary$RF_LABEL)
 recall_accuracy(analytics@document_summary$MANUAL_CODE,
 analytics@document_summary$SVM_LABEL)
 }

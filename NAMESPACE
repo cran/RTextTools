@@ -7,10 +7,11 @@ import(nnet)
 import(tm)
 import(e1071)
 import(ipred)
-import(maxent)
 import(glmnet)
 import(tau)
 import(caTools)
+importFrom("stats", "predict")
+importFrom("utils", "read.csv", "read.delim")
 
 exportClasses(
               matrix_container,

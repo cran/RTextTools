@@ -1,3 +1,11 @@
+2020-04-24  Loren Collingwood <loren.collingwood@gmail.com>
+
+	* DESCRIPTION: Release 1.4.3
+	* Dropped Maxent as dependency
+	* Adjusted examples and rd files to drop maxent
+	* Added in as.compressed.matrix() into RTextTools (was from Maxent)
+	* Fixed Acronym to acronym in create_matrix
+
 2014-01-12  Timothy P. Jurka   <tpjurka@ucdavis.edu>
 
 	* DESCRIPTION: Release 1.4.2

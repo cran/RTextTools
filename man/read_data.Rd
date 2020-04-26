@@ -29,7 +29,7 @@ Other arguments passed to R's \code{read.csv} function.
 An \code{data.frame} object is returned with the contents of the file.
 }
 \author{
-Loren Collingwood <lorenc2@uw.edu>, Timothy P. Jurka <tpjurka@ucdavis.edu>
+Loren Collingwood, Timothy P. Jurka
 }
 \examples{
 library(RTextTools)

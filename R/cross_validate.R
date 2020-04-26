@@ -1,4 +1,4 @@
-cross_validate <- function(container,nfold,algorithm=c("SVM","SLDA","BOOSTING","BAGGING","RF","GLMNET","TREE","NNET","MAXENT"),seed=NA,
+cross_validate <- function(container,nfold,algorithm=c("SVM","SLDA","BOOSTING","BAGGING","RF","GLMNET","TREE","NNET"),seed=NA,
 							method="C-classification", cross=0, cost=100, kernel="radial",  # SVM PARAMETERS
 							maxitboost=100, # BOOSTING PARAMETERS
 							maxitglm=10^5, # GLMNET PARAMETERS
@@ -77,16 +77,12 @@ cross_validate <- function(container,nfold,algorithm=c("SVM","SLDA","BOOSTING","
             model <- nnet(as.factor(allcodes)~ ., data = data.frame(data_and_codes[rand!=i,]),size=size,maxit=maxitnnet,MaxNWts=MaxNWts,rang=rang,decay=decay,trace=FALSE)
             prob <- predict(model,newdata=data.frame(alldata[rand==i,]))
             pred <- apply(prob,1,which.max)
-        } else
-		if (algorithm=="MAXENT") {
-			model <- maxent(container@training_matrix,as.vector(container@training_codes),l1_regularizer,l2_regularizer,use_sgd,set_heldout,verbose)
-			pred <- predict(model,alldata[rand==i,])
-			pred <- pred[,1]
-		}
-
-        cv_accuracy[i] <- recall_accuracy(allcodes[rand==i],pred)
+        } 
+        
+      cv_accuracy[i] <- recall_accuracy(allcodes[rand==i],pred)
 		
-        cat("Fold ",i," Out of Sample Accuracy"," = ",cv_accuracy[i],"\n",sep="")
+      cat("Fold ",i," Out of Sample Accuracy"," = ",cv_accuracy[i],"\n",sep="")
+    
     }
 
 	return(list(cv_accuracy,meanAccuracy=mean(cv_accuracy)))

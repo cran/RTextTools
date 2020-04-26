@@ -151,19 +151,5 @@ create_precisionRecallSummary <- function(container, classification_results, b_v
 		results <- cbind(results,nnet_results)
 	}
 	
-	if (pmatch("MAXENTROPY_LABEL",columns,nomatch=0) > 0) {
-		pred <- scores$MAXENTROPY_LABEL
-		conf <- confusion(true,pred)
-		
-		maxent_precision <- precision(conf)
-		
-		maxent_recall <- recall(conf)
-		
-		maxent_fscore <- fscores_out (b_value,maxent_precision,maxent_recall)
-		maxent_results <- cbind(MAXENTROPY_PRECISION=maxent_precision,MAXENTROPY_RECALL=maxent_recall,MAXENTROPY_FSCORE=maxent_fscore)
-		
-		results <- cbind(results,maxent_results)
-	}
-	
 	return(results)
 }

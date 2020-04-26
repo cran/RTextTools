@@ -32,7 +32,7 @@ A logical (\code{TRUE} or \code{FALSE}) specifying whether to treat the classifi
 A container of class \code{\link{matrix_container-class}} that can be passed into other functions such as \code{\link{train_model}}, \code{\link{train_models}}, \code{\link{classify_model}}, \code{\link{classify_models}}, and \code{\link{create_analytics}}.
 }
 \author{
-Timothy P. Jurka <tpjurka@ucdavis.edu>, Loren Collingwood <lorenc2@uw.edu>
+Timothy P. Jurka <tpjurka@ucdavis.edu>, Loren Collingwood <loren.collingwood@gmail.com>
 }
 \examples{
 library(RTextTools)

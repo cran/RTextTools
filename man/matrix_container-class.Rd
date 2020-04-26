@@ -31,7 +31,7 @@ An S4 class containing all information necessary to train, classify, and generat
   }
 }
 \author{
-Timothy P. Jurka <tpjurka@ucdavis.edu>
+Timothy P. Jurka
 }
 \examples{
 library(RTextTools)

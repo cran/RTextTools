@@ -36,9 +36,6 @@ getStemLanguages()
    \code{inst/scripts/download} in the source of the
      Rstem package.
    }
-\examples{
- getStemLanguages()
-}
 \keyword{IO}
 \keyword{utilities}
 

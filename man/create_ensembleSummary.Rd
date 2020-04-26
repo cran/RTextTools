@@ -20,21 +20,6 @@ The \code{document_summary} slot from the \code{\link{analytics-class}} generate
 This summary is created in the \code{\link{create_analytics}} function.  Note that a threshold value of 3 will return ensemble coverage and precision statistics for topic codes that had 3 or more (i.e. >=3) algorithms agree on the same topic code.
 }
 \author{
-Loren Collingwood <lorenc2@uw.edu>, Timothy P. Jurka <tpjurka@ucdavis.edu>
-}
-\examples{
-library(RTextTools)
-data(NYTimes)
-data <- NYTimes[sample(1:3100,size=100,replace=FALSE),]
-matrix <- create_matrix(cbind(data["Title"],data["Subject"]), language="english", 
-removeNumbers=TRUE, stemWords=FALSE, weighting=tm::weightTfIdf)
-container <- create_container(matrix,data$Topic.Code,trainSize=1:75, testSize=76:100, 
-virgin=FALSE)
-models <- train_models(container, algorithms=c("MAXENT","SVM"))
-results <- classify_models(container, models)
-analytics <- create_analytics(container, results)
-
-ensemble <- create_ensembleSummary(analytics@document_summary)
-ensemble
+Loren Collingwood, Timothy P. Jurka
 }
 \keyword{method}

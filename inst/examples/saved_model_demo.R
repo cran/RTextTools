@@ -14,7 +14,8 @@ NYTimes <- NYTimes[sample(1:3000,size=3000,replace=FALSE),]
 
 # CREATE A TERM-DOCUMENT MATRIX THAT REPRESENTS WORD FREQUENCIES IN EACH DOCUMENT
 # WE WILL TRAIN ON THE Title and Subject COLUMNS
-matrix <- create_matrix(cbind(NYTimes["Title"],NYTimes["Subject"]), language="english", removeNumbers=TRUE, stemWords=TRUE, weighting=weightTfIdf)
+matrix <- create_matrix(cbind(NYTimes["Title"],NYTimes["Subject"]), language="english", removeNumbers=TRUE, 
+                        stemWords=TRUE, weighting=tm::weightTfIdf)
 
 # CREATE A container THAT IS SPLIT INTO A TRAINING SET AND A TESTING SET
 # WE WILL BE USING Topic.Code AS THE CODE COLUMN. WE DEFINE A 2000 
@@ -24,12 +25,12 @@ container <- create_container(matrix,NYTimes$Topic.Code,trainSize=1:3000,virgin=
 
 # THERE ARE TWO METHODS OF TRAINING AND CLASSIFYING DATA.
 # ONE WAY IS TO DO THEM AS A BATCH (SEVERAL ALGORITHMS AT ONCE)
-models <- train_models(container, algorithms=c("SVM","MAXENT"))
+models <- train_models(container, algorithms=c("SVM","GLMNET"))
 
 # NOW SAVE THE ORIGINAL TERM-DOCUMENT MATRIX AND THE TRAINED MODELS
 save(matrix,file="originalMatrix.Rd")
 save(models,file="trainedModels.Rd")
-rm(list=c("data","matrix","container","models")) # DELETE THE OLD DATA NOW THAT IT'S SAVED
+rm(list=c("matrix","container","models")) # DELETE THE OLD DATA NOW THAT IT'S SAVED
 
 
 # CLASSIFYING USING THE TRAINED MODELS
@@ -45,7 +46,9 @@ load("trainedModels.Rd")
 
 # CREATE A TERM-DOCUMENT MATRIX THAT REPRESENTS WORD FREQUENCIES IN EACH DOCUMENT
 # WE WILL TRAIN ON THE Title and Subject COLUMNS
-new_matrix <- create_matrix(cbind(NYTimes["Title"],NYTimes["Subject"]), language="english", removeNumbers=TRUE, stemWords=TRUE, weighting=weightTfIdf, originalMatrix=matrix)
+new_matrix <- create_matrix2(cbind(NYTimes["Title"],NYTimes["Subject"]), language="english", 
+                            removeNumbers=TRUE, stemWords=TRUE, weighting=tm::weightTfIdf, 
+                            originalMatrix=matrix)
 
 # CREATE A container THAT IS SPLIT INTO A TRAINING SET AND A TESTING SET
 # WE WILL BE USING Topic.Code AS THE CODE COLUMN. WE DEFINE A 2000 

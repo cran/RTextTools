@@ -11,7 +11,6 @@ container <- create_container(doc_matrix, USCongress$major, trainSize=1:4000, te
 
 # DEMONSTRATION OF CROSS-VALIDATION
 SVM <- cross_validate(container,4,"SVM")
-MAXENT <- cross_validate(container,4,"MAXENT")
 GLMNET <- cross_validate(container,4,"GLMNET")
 SLDA <- cross_validate(container,4,"SLDA")
 BAGGING <- cross_validate(container,4,"BAGGING")

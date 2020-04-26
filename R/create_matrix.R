@@ -28,7 +28,7 @@ create_matrix <- function(textColumns, language="english", minDocFreq=1, maxDocF
         terms <- colnames(originalMatrix[,which(!colnames(originalMatrix) %in% colnames(matrix))])
 
         weight <- 0
-        if (attr(weighting,"Acronym")=="tf-idf") weight <- 0.000000001
+        if (attr(weighting,"acronym")=="tf-idf") weight <- 0.000000001
         amat <- matrix(weight,nrow=nrow(matrix),ncol=length(terms))
         colnames(amat) <- terms
         rownames(amat) <- rownames(matrix)

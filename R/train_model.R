@@ -1,4 +1,4 @@
-train_model <- function(container,algorithm=c("SVM","SLDA","BOOSTING","BAGGING","RF","GLMNET","TREE","NNET","MAXENT"),
+train_model <- function(container,algorithm=c("SVM","SLDA","BOOSTING","BAGGING","RF","GLMNET","TREE","NNET"),
 						method="C-classification", cross=0, cost=100, kernel="radial",  # SVM PARAMETERS
 						maxitboost=100, # BOOSTING PARAMETERS
 						maxitglm=10^5, # GLMNET PARAMETERS
@@ -28,9 +28,7 @@ train_model <- function(container,algorithm=c("SVM","SLDA","BOOSTING","BAGGING",
             model <- tree(container.training_codes ~ ., data=data.frame(as.matrix(container@training_matrix),container@training_codes))
         } else if (algorithm=="NNET") {
             model <- nnet(container.training_codes ~ ., data=data.frame(as.matrix(container@training_matrix),container@training_codes), size=size, maxit=maxitnnet, MaxNWts=MaxNWts, rang=rang, decay=decay, trace=trace)
-        } else if (algorithm=="MAXENT") {
-			model <- maxent(container@training_matrix,as.vector(container@training_codes),l1_regularizer,l2_regularizer,use_sgd,set_heldout,verbose)
-		} else {
+        } else {
 			stop("ERROR: Invalid algorithm specified. Type print_algorithms() for a list of available algorithms.")
 		}
 		

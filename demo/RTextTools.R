@@ -10,10 +10,9 @@ doc_matrix <- create_matrix(USCongress$text, language="english", removeNumbers=T
 container <- create_container(doc_matrix, USCongress$major, trainSize=1:4000, testSize=4001:4449, virgin=FALSE)
 
 # TRAIN THE ALGORITHMS USING THE CONTAINER
-# ALTERNATIVELY, train_models(container, c("SVM","GLMNET","MAXENT","SLDA","BOOSTING","BAGGING","RF","NNET","TREE"))
+# ALTERNATIVELY, train_models(container, c("SVM","GLMNET","SLDA","BOOSTING","BAGGING","RF","NNET","TREE"))
 SVM <- train_model(container,"SVM")
 GLMNET <- train_model(container,"GLMNET")
-MAXENT <- train_model(container,"MAXENT")
 SLDA <- train_model(container,"SLDA")
 BOOSTING <- train_model(container,"BOOSTING")
 BAGGING <- train_model(container,"BAGGING")
@@ -25,7 +24,6 @@ TREE <- train_model(container,"TREE")
 # ALTERNATIVELY, classify_models(container, list_of_trained_models)
 SVM_CLASSIFY <- classify_model(container, SVM)
 GLMNET_CLASSIFY <- classify_model(container, GLMNET)
-MAXENT_CLASSIFY <- classify_model(container, MAXENT)
 SLDA_CLASSIFY <- classify_model(container, SLDA)
 BOOSTING_CLASSIFY <- classify_model(container, BOOSTING)
 BAGGING_CLASSIFY <- classify_model(container, BAGGING)
@@ -36,7 +34,7 @@ TREE_CLASSIFY <- classify_model(container, TREE)
 # CREATE THE ANALYTICS USING THE RESULTS FROM ALL THE ALGORITHMS
 analytics <- create_analytics(container,cbind(SVM_CLASSIFY, SLDA_CLASSIFY, 
 	BOOSTING_CLASSIFY, BAGGING_CLASSIFY, RF_CLASSIFY, GLMNET_CLASSIFY, 
-	NNET_CLASSIFY, TREE_CLASSIFY, MAXENT_CLASSIFY))
+	NNET_CLASSIFY, TREE_CLASSIFY))
 
 # DEMONSTRATION OF HOW TO WRITE THE DATA OUT TO A .CSV FILE
 # write.csv(analytics@document_summary,"DocumentSummary.csv")

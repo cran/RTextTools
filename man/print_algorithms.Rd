@@ -16,7 +16,7 @@ print_algorithms()
 Prints a list of available algorithms.
 }
 \author{
-Timothy P. Jurka <tpjurka@ucdavis.edu>
+Timothy P. Jurka
 }
 \examples{
 library(RTextTools)

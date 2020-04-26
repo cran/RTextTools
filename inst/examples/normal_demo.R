@@ -15,7 +15,7 @@ NYTimes <- NYTimes[sample(1:3100,size=3100,replace=FALSE),]
 
 # CREATE A TERM-DOCUMENT MATRIX THAT REPRESENTS WORD FREQUENCIES IN EACH DOCUMENT
 # WE WILL TRAIN ON THE Title and Subject COLUMNS
-matrix <- create_matrix(cbind(NYTimes["Title"],NYTimes["Subject"]), language="english", removeNumbers=TRUE, stemWords=TRUE, weighting=weightTfIdf)
+matrix <- create_matrix(cbind(NYTimes["Title"],NYTimes["Subject"]), language="english", removeNumbers=TRUE, stemWords=TRUE, weighting=tm::weightTfIdf)
 
 
 # CREATE A container THAT IS SPLIT INTO A TRAINING SET AND A TESTING SET
@@ -26,17 +26,17 @@ container <- create_container(matrix,NYTimes$Topic.Code,trainSize=1:3000, testSi
 
 # THERE ARE TWO METHODS OF TRAINING AND CLASSIFYING DATA.
 # ONE WAY IS TO DO THEM AS A BATCH (SEVERAL ALGORITHMS AT ONCE)
-models <- train_models(container, algorithms=c("GLMNET","MAXENT","SVM"))
+# Don't worry about the glmnet error #
+models <- train_models(container, algorithms=c("GLMNET","SVM"))
 results <- classify_models(container, models)
 
 
 # ANOTHER WAY IS TO DO THEM ONE BY ONE.
+# Don't worry about the glmnet error #
 glmnet_model <- train_model(container,"GLMNET")
-maxent_model <- train_model(container,"MAXENT")
 svm_model <- train_model(container,"SVM")
 
 glmnet_results <- classify_model(container,glmnet_model)
-maxent_results <- classify_model(container,maxent_model)
 svm_results <- classify_model(container,svm_model)
 
 # USE print_algorithms() TO SEE ALL AVAILABLE ALGORITHMS.
@@ -48,7 +48,7 @@ print_algorithms()
 analytics <- create_analytics(container, results)
 
 # IF YOU USED OPTION 2, YOU CAN GENERATE ANALYTICS USING:
-analytics <- create_analytics(container,cbind(svm_results,maxent_results))
+analytics <- create_analytics(container,cbind(svm_results,glmnet_results))
 
 # RESULTS WILL BE REPORTED BACK IN THE analytics VARIABLE.
 # analytics@algorithm_summary: SUMMARY OF PRECISION, RECALL, F-SCORES, AND ACCURACY SORTED BY TOPIC CODE FOR EACH ALGORITHM
